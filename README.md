@@ -1,7 +1,7 @@
 ES6 Project Demo
 =================
 
-CI status: ![Build Status](https://travis-ci.org/js-demos/es6-project-demo.png?branch=master)
+CI status: ![Build Status](https://travis-ci.org/TW-freetravel/freetravel.svg?branch=master)
 
 A basic es6 project, which includes:
 
