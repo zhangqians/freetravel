@@ -1,5 +1,5 @@
-ES6 Project Demo
-=================
+freetravel
+==========
 
 CI status: ![Build Status](https://travis-ci.org/TW-freetravel/freetravel.svg?branch=master)
 
