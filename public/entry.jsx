@@ -1,11 +1,28 @@
 import Hello from './hello.jsx';
+import Login from './login.jsx';
+import App from './app.jsx';
+import Register from './register/register-qufan.jsx';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
+import {Router, Route, IndexRoute, hashHistory} from 'react-router';
+require('jquery');
+require("bootstrap-webpack");
+
+
+const router = <Router history={hashHistory}>
+    <Route path='/' component={App}>
+        <IndexRoute component={Hello}/>
+        <Route component={Login}/>
+        <Route path='/login' component={Login}/>
+        <Route path='/register' component={Register}/>
+    </Route>
+</Router>;
+
 
 ReactDOM.render(
-  <Hello />,
-  document.getElementById("content")
+    router,
+    document.getElementById("content")
 );
 
 // use jquery
@@ -14,5 +31,5 @@ console.log($('#content').text());
 // Notice!!!
 // Following is required to make reloading happen
 if (module.hot) {
-  module.hot.accept();
+    module.hot.accept();
 }
