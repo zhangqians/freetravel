@@ -1,6 +1,8 @@
 import React from 'react';
 import Logo from './img/logo.png';
 import './navs.css';
+import {Link} from 'react-router';
+
 class Nav extends React.Component {
     render() {
         return (<div>
@@ -13,8 +15,8 @@ class Nav extends React.Component {
                 </div>
                 <div>
                     <ul className="nav-tabs _nav-ul">
-                        <li className="li-lxy"><a href="#">首页</a></li>
-                        <li className="li-lxy"><a href="#">出租租赁</a></li>
+                        <li className="li-lxy"><Link to="/rent">首页</Link></li>
+                        <li className="li-lxy"><Link to="#">出租租赁</Link></li>
                         <li className="li-lxy"><a href="#">个性服务</a></li>
                         <li className="li-lxy"><a href="#">驴友匹配</a></li>
                         <li className="li-lxy"><a href="#">一站到底</a></li>

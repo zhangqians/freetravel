@@ -1,0 +1,64 @@
+.main-rent-lxy{
+    clear: both;
+    width: 100%;
+    height: 50%;
+    padding: 2% 1%;
+}
+.rent-left-lxy{
+    float: left;
+    width:18%;
+    height: 100%;
+    margin: auto 0;
+}
+.rent-left-lxy a{
+    display: block;
+    position: relative;
+    width:100%;
+    height:100%;
+    background: #aca;
+    color: #eee;
+    line-height: 618px;
+    /*line-height: 718px;*/
+    text-align: center;
+}
+.rent-left-lxy a:hover{
+    text-decoration: none;
+    font-size: 22px;
+    background: #D3F1CD;
+    color: #fff;
+}
+.rent-right-lxy{
+    float: right;
+    width: 80%;
+    height: 618px;
+}
+.img-lxy-main{
+    display: inline-block;
+    float: left;
+    width: 75%;
+    height: 618px;
+    border:1px #eee solid;
+}
+.img-lxy-main img{
+    width: 100%;
+    height: 590px;
+}
+.rent-right-lxy div a{
+    text-align: center;
+    color: #555;
+}
+.rent-right-lxy div a:hover{
+    text-decoration: none;
+}
+.img-lxy {
+    position: relative;
+    float: right;
+    border:1px #eee solid;
+    text-align: center;
+    width: 24%;
+    height:204px;
+}
+.img-lxy a img{
+    width:56%;
+    line-height: 239px;
+}

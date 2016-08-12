@@ -1,6 +1,7 @@
 import Hello from './hello.jsx';
 import Login from './login.jsx';
 import App from './app.jsx';
+import Rent from './index-rent-lxy/index-rent.jsx';
 import Register from './register/register-qufan.jsx';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -16,6 +17,7 @@ const router = <Router history={hashHistory}>
         <Route component={Login}/>
         <Route path='/login' component={Login}/>
         <Route path='/register' component={Register}/>
+        <Route path='/rent' component={Rent}/>
     </Route>
 </Router>;
 

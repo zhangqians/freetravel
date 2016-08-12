@@ -32,7 +32,7 @@ class Register extends React.Component{
                         <input type="password" className="form-control" id="confirm-password"
                                placeholder="请确认密码" required pattern="^.{6,18}$"/>
                     </div>
-                    <input type="submit" value="用户注册" className="btn"/>
+                    <input type="submit" value="用户注册" className="btn btn-primary"/>
                     <span>有账号?<a href="http://www.w3school.com.cn/" className="to_register">登陆 </a></span>
                 </form>
                 </div>
