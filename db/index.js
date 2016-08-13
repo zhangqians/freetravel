@@ -59,10 +59,8 @@ exports.login = function (request, response) {
             response.send('success');
             // response.send(docs+'<br><br>login success');
         } else {
-            response.redirect('./login');
-            // var tpl = '<script>alert("YOU ARE A BAD BOY")</script>';
-            // response.send(tpl); //你传回去的HTML码流将在客户的浏览器中执行
-            //
+            // response.redirect('./login');
+            response.send('error');
 
         }
     });

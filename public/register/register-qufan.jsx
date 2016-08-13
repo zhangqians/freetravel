@@ -41,7 +41,7 @@ class Register extends React.Component{
     render(){
         return(
             <div className="register">
-            {/*<form>*/}
+            {/*<form method="post">*/}
                     <div className="title"><h3>欢迎注册</h3></div>
                     <div className="form-group">
                         <label>用户名</label>

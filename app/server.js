@@ -35,6 +35,7 @@ app.get('/hello', function(req, res) {
 
 
 app.post("/register", routes.insert);
+app.post('/login',routes.login);
 
 app.listen(3000, function() {
   console.log('Listening on 3000');
