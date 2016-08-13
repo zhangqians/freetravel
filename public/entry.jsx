@@ -1,10 +1,12 @@
-import Hello from './hello.jsx';
+import SignIn from './signIn/jsx/signIn.jsx';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
+require('jquery');
+require("bootstrap-webpack");
 
 ReactDOM.render(
-  <Hello />,
+  <SignIn />,
   document.getElementById("content")
 );
 
