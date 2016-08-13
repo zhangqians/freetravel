@@ -5,7 +5,7 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import express from 'express';
 import bodyParser from "body-parser";
 
-var routes = require('../db/index.js');
+var routes = require('../db/loginAndRegister.js');
 
 const app = express();
 const compiler = webpack(webpackConfig);

@@ -20,7 +20,7 @@ class Register extends React.Component{
 //                    $("#div1").html(result);
                 if(result=='success'){
                     alert('success');
-                    // location.href='/rent'
+                    // location.href='./rent'
                     self.location='/#/rent'
                 }
                 else if(result == "error") {
