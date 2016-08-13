@@ -6,12 +6,14 @@ class Register extends React.Component{
     commit() {
         let name = $('#name').val();
         let password = $('#password').val();
+        let email = $('#email').val();
+        let phone = $('#phone').val();
         $.ajax({
             url: './register',
             type: 'POST',
             async: true,
             contentType: 'application/json',
-            data: JSON.stringify({name: name, password: password}),
+            data: JSON.stringify({name: name, password: password,email:email,phone:phone}),
             // data: {name :name,password:password},
 
             success(result) {

@@ -22,7 +22,7 @@ exports.insert = function (request, response) {
         if (e) response.send(e.message);
 
         if (docs == null) {
-            console.log(name, password);
+            console.log(name, password,email,phone);
             var user = new User({
                 name: name,
                 password: password,
