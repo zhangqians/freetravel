@@ -13,11 +13,11 @@ class SignIn extends React.Component {
                 </div>
                 <p className="pipe"><span
                     className="u_logo"></span>
-                    <input className="ipt" type="text" placeholder="请输入用户名或邮箱" value="" />
+                    <input className="ipt" type="text" placeholder="请输入用户名或邮箱" />
                 </p>
                 <p className="pos">
                     <span className="p_logo"></span>
-                    <input className="ipt" id="password" type="password" placeholder="请输入密码" value="" />
+                    <input className="ipt" id="password" type="password" placeholder="请输入密码"  />
                 </p>
                 <div className="forget">
                     <p className="setMargin">

@@ -1,4 +1,4 @@
-import SignIn from './signIn/jsx/signIn.jsx';
+import SignIn from './signIn/jsx/signIn.jsx'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
