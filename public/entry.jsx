@@ -1,4 +1,5 @@
 import Hello from './hello.jsx';
+import Index from './index.jsx';
 import SignIn from './signIn/jsx/signIn.jsx';
 import App from './app.jsx';
 import Rent from './index-rent-lxy/index-rent.jsx';
@@ -12,7 +13,10 @@ require("bootstrap-webpack");
 
 
 const router = <Router history={hashHistory}>
-    <Route path='/' component={App}>
+    <Route path="/" component={Index}>
+
+    </Route>
+    <Route path='/main' component={App}>
         <IndexRoute component={Hello}/>
         <Route path='/login' component={SignIn}/>
         <Route path='/register' component={Register}/>
