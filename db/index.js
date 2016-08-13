@@ -18,32 +18,31 @@ exports.insert = function (request, response) {
     let password = request.body.password;
     let email = request.body.email;
     let phone = request.body.phone;
-    console.log(name);
-    // User.findOne({name: name}, function (e, docs) {
-    //     if (e) response.send(e.message);
-    //
-    //     if (docs == null) {
-    //         console.log(name, password);
-    //         var user = new User({
-    //             name: name,
-    //             password: password,
-    //             email:email,
-    //             phone:phone
-    //         });
-    //         user.save(function (err) {
-    //             console.log('save status:', err ? 'failed' : 'success');
-    //             response.send('success');
-    //
-    //         });
-    //     }
-        // else {
+    User.findOne({name: name}, function (e, docs) {
+        if (e) response.send(e.message);
 
-        // response.send('用户已存在');
+        if (docs == null) {
+            console.log(name, password);
+            var user = new User({
+                name: name,
+                password: password,
+                email:email,
+                phone:phone
+            });
+            user.save(function (err) {
+                console.log('save status:', err ? 'failed' : 'success');
+                response.send('success');
+
+            });
+        }
+        else {
+        //
+        response.send('error');
         // var tpl = '<script>alert("用户已存在")</script>';
         // response.send(tpl); //你传回去的HTML码流将在客户的浏览器中执行
         // response.redirect('./signin');
-        // }
-    // });
+        }
+    });
 
 };
 

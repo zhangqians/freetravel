@@ -21,12 +21,17 @@ class Register extends React.Component{
                     // location.href='/rent'
                     self.location='/#/rent'
                 }
+                else if(result == "error") {
+                    // location.href='#/'
+                    alert('用户已存在');
+                }
             },
-            // error: function (data, status) {
-            //     if (status == "error") {
-            //         location.href='#/'
-            //     }
-            // }
+            error(result){
+                if (result == "error") {
+                    // location.href='#/'
+                    alert('用户已存在');
+                }
+            }
         });
 
     }
