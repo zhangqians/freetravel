@@ -2,6 +2,7 @@
  * Created by Leonard on 16/8/13.
  */
 import React from 'react';
+import Brife from './brief/brizyn.jsx';
 
 
 export default class Index extends React.Component {
@@ -9,6 +10,9 @@ export default class Index extends React.Component {
         return (
             <div className="container-fluid">
                 hello
+                <div>
+                    <Brife/>
+                </div>
             </div>
         );
     }
