@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 
-class Navs extends React.Component {
+class LoginAndRegisterNav extends React.Component {
     render() {
         return (<div>
             <ul className="nav nav-pills pull-right">
@@ -12,4 +12,4 @@ class Navs extends React.Component {
     }
 }
 
-export default Navs;
+export default LoginAndRegisterNav;
