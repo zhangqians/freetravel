@@ -7,4 +7,9 @@
     margin-bottom: 20px;
     text-align: center;
 }
-
+@media (max-width: 768px) {
+    .summary {
+        padding-right: 3px;
+        padding-left: 3px;
+    }
+}

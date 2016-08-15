@@ -1,9 +1,9 @@
 import React from 'react';
-import BeautyPic from '../images/beauty.jpeg';
-import CountryPic from '../images/country.jpg';
-import FriendsPic from '../images/friends.jpg';
-import TentPic from '../images/tent.jpg';
-import WaterPic from '../images/water.jpg';
+import BeautyPic from '../images/pictures-wall/beauty.jpeg';
+import CountryPic from '../images/pictures-wall/country.jpg';
+import FriendsPic from '../images/pictures-wall/friends.jpg';
+import TentPic from '../images/pictures-wall/tent.jpg';
+import WaterPic from '../images/pictures-wall/water.jpg';
 
 require("../css/pictures-wall.css");
 

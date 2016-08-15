@@ -14,9 +14,11 @@ class SignIn extends React.Component {
             data: JSON.stringify({name: name, password: password}),
 
             success(result) {
-                if (result == 'success') {
+                if (result.type == 'success') {
                     alert('success');
-                    self.location = '/#/rent'
+                    const name = result.name;
+                    $("#div1").html('Welcome:'+name);
+                    self.location = '/#/indexRent'
                 }
                 else if (result == "error") {
                     alert('用户不存在');
