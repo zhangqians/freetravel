@@ -1,11 +1,27 @@
 import React from 'react';
-
-class Hello extends React.Component {
+import BrifeIntroduciton from './component/brief-introduction.jsx';
+import PicturesWall from './component/pictures-wall.jsx';
+import Buttom from './component/buttom.jsx';
+export default class Hello extends React.Component {
     render() {
-        return (<div>
-            {/*<h1>Hello world!</h1>*/}
-        </div>)
+        return (
+            <div className="container-fluid">
+                <div>
+                    <div>
+                        <PicturesWall/>
+                    </div>
+
+                    <div>
+                        <BrifeIntroduciton/>
+                    </div>
+                </div>
+                <div>
+                    {this.props.children}
+                </div>
+                <div className="buttom">
+                    <Buttom/>
+                </div>
+            </div>
+        );
     }
 }
-
-export default Hello;

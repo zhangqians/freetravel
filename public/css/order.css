@@ -1,0 +1,47 @@
+html, body {
+    font-size: 62.5%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#content {
+    position: relative;
+    height: 100%;
+    background-size: cover;
+    overflow: auto;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+
+}
+
+.input-lg{
+    height: 4rem;
+   margin-top: 3rem;
+
+
+}
+.control-label {
+    font-size: 1.5rem;
+}
+
+
+.qqz {
+    margin-top: 2.5rem;
+    margin-left: 75%;
+    width: 6rem;
+    height: 3rem;
+    background-color: #b4b472;
+}
+
+.details {
+    width: 30%;
+    height: 40%;
+    margin-top: 10%;
+    margin-left: 40%;
+
+}
+.p-size{
+    font-size: 2.0rem;
+}
+
+
+

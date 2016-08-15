@@ -1,7 +1,8 @@
 import React from "react";
-import RentPic from "../images/rent.png";
-import FreePic from "../images/free.png";
-import FriendPic from '../images/friend.png';
+import RentPic from "../images/brief-introduction/rent.png";
+import FreePic from "../images/brief-introduction/free.png";
+import FriendPic from '../images/brief-introduction/friend.png';
+import {Link} from 'react-router';
 
 require("../css/brief-introduction.css");
 
@@ -14,7 +15,7 @@ class BrifeIntroduction extends React.Component {
                         <img className="img-circle" src={RentPic}/>
                         <h2>出租</h2>
                         <p>让你出门更轻松</p>
-                        <p><a className="btn btn-default" href="#" role="button">点我了解</a></p>
+                        <p><Link className="btn btn-default" to="/rent" role="button">点我了解</Link></p>
                     </div>
 
                     <div className="col-md-4">

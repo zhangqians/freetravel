@@ -19,7 +19,7 @@ body {
 }
 
 .tou-img {
-    background: url("../images/tou.png") no-repeat;
+    background: url("../images/sign-in/tou.png") no-repeat;
     width: 97px;
     height: 92px;
     position: absolute;
@@ -28,7 +28,7 @@ body {
 }
 
 .left-hand {
-    background: url("../images/hand.png") no-repeat;
+    background: url("../images/sign-in/hand.png") no-repeat;
     width: 30px;
     height: 20px;
     position: absolute;
@@ -37,7 +37,7 @@ body {
 }
 
 .right-hand {
-    background: url("../images/hand.png") no-repeat;
+    background: url("../images/sign-in/hand.png") no-repeat;
     width: 30px;
     height: 20px;
     position: absolute;
@@ -51,7 +51,7 @@ body {
 }
 
 .user-logo {
-    background: url("../images/username.png") no-repeat;
+    background: url("../images/sign-in/username.png") no-repeat;
     padding: 10px 10px;
     position: absolute;
     top: 46px;
@@ -63,7 +63,7 @@ body {
 }
 
 .password-logo {
-    background: url("../images/password.png") no-repeat;
+    background: url("../images/sign-in/password.png") no-repeat;
     padding: 10px 10px;
     position: absolute;
     top: 15px;

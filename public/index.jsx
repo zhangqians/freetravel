@@ -1,6 +1,4 @@
 import React from 'react';
-import BrifeIntroduciton from './component/brief-introduction.jsx';
-import PicturesWall from './component/pictures-wall.jsx';
 import LoginAndRegisterNavs from './component/login-and-register-nav.jsx';
 import TabsNavs from './component/navs.jsx';
 
@@ -8,7 +6,7 @@ import TabsNavs from './component/navs.jsx';
 export default class Index extends React.Component {
     render() {
         return (
-            <div className="container-fluid">
+            <div className="container-fluid ">
                 <div className="container-fluid">
                     <div>
                         <div className="conta">
@@ -21,12 +19,10 @@ export default class Index extends React.Component {
                 </div>
 
                 <div>
-                    <PicturesWall/>
+                    {this.props.children}
                 </div>
 
-                <div>
-                    <BrifeIntroduciton/>
-                </div>
+
             </div>
         );
     }
