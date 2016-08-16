@@ -22,7 +22,7 @@ npm start
 
 Then visit <http://localhost:3000>
 
-If you modify `public/hello.jsx` to change the text, you will see the changes are applied to page instantly.
+If you modify `public/index.jsx` to change the text, you will see the changes are applied to page instantly.
 
 
 
