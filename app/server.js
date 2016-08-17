@@ -5,6 +5,7 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import express from 'express';
 import bodyParser from "body-parser";
 import mongoose from 'mongoose';
+import db from './db/db';
 
 var routes = require('./db/login-and-register.js');
 
@@ -38,6 +39,6 @@ app.post("/register", routes.insert);
 app.post('/login', routes.login);
 
 app.listen(3000, function () {
+    db.connect();
     console.log('Listening on 3000');
 });
-mongoose.connect("mongodb://localhost/freetravel-db");
