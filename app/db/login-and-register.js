@@ -1,11 +1,5 @@
-const mongoose = require('mongoose');
+import {User} from './schema';
 
-const User = mongoose.model('User', {
-    name: String,
-    password: String,
-    email: String,
-    phone: String,
-});
 
 exports.insert = function (req, res) {
     let name = req.body.name;
