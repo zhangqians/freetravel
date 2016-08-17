@@ -4,12 +4,7 @@ import _ from 'lodash';
 
 
 const router = express.Router();
-//
-// function register(req, res, next) {
-//     const data = getUserInformation(req);
-//     console.log(data);
-//
-// }
+
 
 function getUserInformation(req) {
     const data = req.body;
