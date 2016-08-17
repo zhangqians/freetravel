@@ -51,7 +51,7 @@ export default class Register extends Component {
                            value={this.state.confirmPassword}
                            onChange={this.onHandlerConfirmPassword.bind(this)}/>
                 </div>
-                <input type="submit" value="注册" className="btn btn-primary" />
+                <input type="submit" value="注册" className="btn btn-primary"/>
                 <span>有账号?<a className="to_register">登陆 </a></span>
             </div>
         </form>
@@ -83,34 +83,40 @@ export default class Register extends Component {
     }
 
     onHandlerConfirmPassword(event) {
-
         this.setState({
             confirmPassword: event.target.value
         })
     }
 
     onSumbit(event) {
-        request.post('/api/user')
-            .send({
-                name: this.state.name,
-                email: this.state.email,
-                phone: this.state.phone,
-                password: this.state.password,
-                confirmPassword: this.state.confirmPassword
-            })
-            .end((err, res) => {
-                if (err) return console.error(err);
-                console.log(res.statusCode);
-                // console.log(res.head);
-                if(res.statusCode==201){
-                    alert("success!");
-                    self.location = '/#/indexRent'
-                }
-                console.log(res.text);
-                // alert("success!");
-
-            });
         event.preventDefault();
+        if (this.state.password != this.state.confirmPassword) {
+            alert('confirm-password and password is not the same one!');
+        }
+        else {
+            request.post('/api/user')
+                .send({
+                    name: this.state.name,
+                    email: this.state.email,
+                    phone: this.state.phone,
+                    password: this.state.password,
+                    confirmPassword: this.state.confirmPassword
+                })
+                .end((err, res) => {
+                    if (err) {
+                        alert(res.statusCode + ',' + res.text);
+                        return console.error(err + ',' + res.text)
+                    }
+                    console.log(res.statusCode);
+                    if (res.statusCode == 201) {
+                        alert(res.statusCode + ",register success!");
+                        self.location = '/#/indexRent'
+                    }
+                    console.log(res.text);
+
+                });
+        }
+
     }
 }
 
