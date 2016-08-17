@@ -101,12 +101,11 @@ export default class Register extends Component {
             .end((err, res) => {
                 if (err) return console.error(err);
                 console.log(res.statusCode);
-                console.log(res.head);
+                // console.log(res.head);
                 console.log(res.text);
-                alert("success!");
+                // alert("success!");
 
             });
-        // alert("success!");
         event.preventDefault();
     }
 }
