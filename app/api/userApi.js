@@ -1,6 +1,5 @@
 import express from 'express';
 import {User} from '../db/schema';
-import _ from 'lodash';
 
 
 const router = express.Router();
@@ -20,15 +19,12 @@ function isUserInformationLegal(data) {
     if (data.name == '' || data.password == '' || data.email == '' || data.phone == '') {
         console.log(data);
         console.log('--data is null--');
-        // res.status(400).send('Please finish the form');
         return {legal: false, message: 'Please finish the form'};
     }
     else if (regEmail.test(data.email) == false) {
-        // res.status(400).send('The email is error');
         return {legal: false, message: 'The email is error'};
     }
     else if (data.phone.length != 11 || regPhone.test(data.phone) == false) {
-        // res.status(400).send('The phone number is error');
         return {legal: false, message: 'The phone number is error'};
     }
     else return {legal: true, message: 'legal is true'};
@@ -64,9 +60,9 @@ router.post('/', function (req, res, next) {
 
                 res.status(409).send('Same name in db.');
             }
-            else {
-                res.status(201).send('?');
-            }
+            // else {
+            //     res.status(201).send('?');
+            // }
         });
     }
     else {
