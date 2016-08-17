@@ -9,7 +9,7 @@ class Register extends React.Component {
         let phone = $('#phone').val();
 
         $.ajax({
-            url: './register',
+            url: './api/user',
             type: 'POST',
             async: true,
             contentType: 'application/json',
