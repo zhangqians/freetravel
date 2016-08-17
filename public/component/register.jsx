@@ -20,14 +20,15 @@ class Register extends React.Component {
                     alert('success');
                     self.location = '/#/rent'
                 }
-                else if (result == "error") {
-                    alert('用户已存在');
-                }
+                // else if (result.responseText == "error") {
+                //     alert('用户已存在');
+                // }
             },
             error(result){
-                if (result == "error") {
-                    alert('用户已存在');
-                }
+                // console.log(result);
+                // if (result.responseText == "error") {
+                    alert(result.responseText);
+                // }
             }
         });
     }
@@ -58,7 +59,7 @@ class Register extends React.Component {
                 </div>
                 <div className="form-group">
                     <label>确认密码</label>
-                    <input type="password" className="form-control" id="confirm-password"
+                    <input type="password" className="form-control" id="confirmPassword"
                            placeholder="请确认密码" required pattern="^.{6,18}$"/>
                 </div>
                 <input type="submit" value="注册" className="btn btn-primary" onClick={this.commit}/>
