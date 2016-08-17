@@ -16,6 +16,7 @@ class Register extends React.Component {
             data: JSON.stringify({name: name, password: password, email: email, phone: phone}),
 
             success(result) {
+                console.log(result);
                 if (result == 'success') {
                     alert('success');
                     self.location = '/#/rent'
