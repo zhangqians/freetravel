@@ -102,6 +102,9 @@ export default class Register extends Component {
                 if (err) return console.error(err);
                 console.log(res.statusCode);
                 // console.log(res.head);
+                if(res.statusCode==201){
+                    alert("success!");
+                }
                 console.log(res.text);
                 // alert("success!");
 
