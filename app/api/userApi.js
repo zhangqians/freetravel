@@ -5,7 +5,6 @@ import _ from 'lodash';
 
 const router = express.Router();
 
-
 function getUserInformation(req) {
     const data = req.body;
     return data;
