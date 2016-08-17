@@ -3,9 +3,10 @@ import webpackConfig from '../webpack.config';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import express from 'express';
+import apiRouter from './api/api.js';
 import bodyParser from "body-parser";
-import mongoose from 'mongoose';
 import db from './db/db';
+
 
 var routes = require('./db/login-and-register.js');
 
@@ -30,6 +31,8 @@ app.use(webpackHotMiddleware(compiler, {
 }));
 
 app.use(express.static('./public'));
+
+app.use('/api', apiRouter);
 
 app.get('/hello', function (req, res) {
     res.send('Index, world!');

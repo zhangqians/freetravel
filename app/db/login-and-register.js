@@ -36,7 +36,6 @@ exports.login = function (req, res) {
         if (err) res.send(err.message);
 
         if (docs != null) {
-            // res.send('success');
             res.json({name: docs.name, type: 'success'});
         } else {
             res.send('error');
