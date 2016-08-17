@@ -13,7 +13,7 @@ export default class Register extends Component {
     }
 
     render() {
-        return <div>
+        return <form onSubmit={this.onSumbit.bind(this)}>
             <div className="register">
                 <div className="title"><h3>欢迎注册</h3></div>
                 <div className="form-group">
@@ -51,10 +51,10 @@ export default class Register extends Component {
                            value={this.state.confirmPassword}
                            onChange={this.onHandlerConfirmPassword.bind(this)}/>
                 </div>
-                <input type="submit" value="注册" className="btn btn-primary" onClick={this.onSumbit.bind(this)}/>
+                <input type="submit" value="注册" className="btn btn-primary" />
                 <span>有账号?<a className="to_register">登陆 </a></span>
             </div>
-        </div>
+        </form>
     }
 
     onHandlerName(event) {
@@ -89,7 +89,7 @@ export default class Register extends Component {
         })
     }
 
-    onSumbit() {
+    onSumbit(event) {
         request.post('/api/user')
             .send({
                 name: this.state.name,
