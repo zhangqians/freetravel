@@ -104,7 +104,7 @@ export default class Register extends Component {
                 // console.log(res.head);
                 if(res.statusCode==201){
                     alert("success!");
-                    self.location = '/#/rent'
+                    self.location = '/#/indexRent'
                 }
                 console.log(res.text);
                 // alert("success!");
