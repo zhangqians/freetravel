@@ -32,7 +32,7 @@ export default class Register extends Component {
                 </div>
                 <div className="form-group">
                     <label>手机号码</label>
-                    <input type="text" className="form-control" id="phone"
+                    <input type="tel" className="form-control" id="phone"
                            placeholder="请输入手机号码" required pattern="^(\+86)?(1[0-9]{10})$"
                            value={this.state.phone}
                            onChange={this.onHandlerPhone.bind(this)}/>
@@ -104,6 +104,7 @@ export default class Register extends Component {
                 // console.log(res.head);
                 if(res.statusCode==201){
                     alert("success!");
+                    self.location = '/#/rent'
                 }
                 console.log(res.text);
                 // alert("success!");
