@@ -40,9 +40,13 @@ app.get('/hello', function (req, res) {
 
 app.post("/register", routes.insert);
 app.post('/login', routes.login);
+if (require.main === module) {
+  app.listen(3000, function () {
+    db.connect((err) => {
+      if (err) return console.error('db connection failed');
+    });
+    console.log('Listening on 3000');
+  });
+}
 
-app.listen(3000, function () {
-  db.connect();
-  console.log('Listening on 3000');
-});
 export default app;

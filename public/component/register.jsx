@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import request from 'superagent';
+require('../css/register.css');
 export default class Register extends Component {
     constructor(props) {
         super(props);
@@ -40,14 +41,14 @@ export default class Register extends Component {
                 < div className="form-group">
                     <label>设置密码</label>
                     <input type="password" className="form-control" id="password"
-                           placeholder="请输入密码" required pattern="^.{6,18}$"
+                           placeholder="请输入密码(至少六位)" required pattern="^.{6,18}$"
                            value={this.state.password}
                            onChange={this.onHandlerPassword.bind(this)}/>
                 </div>
                 <div className="form-group">
                     <label>确认密码</label>
                     <input type="password" className="form-control" id="confirm-password"
-                           placeholder="请确认密码" required pattern="^.{6,18}$"
+                           placeholder="请确认密码(至少六位)" required pattern="^.{6,18}$"
                            value={this.state.confirmPassword}
                            onChange={this.onHandlerConfirmPassword.bind(this)}/>
                 </div>

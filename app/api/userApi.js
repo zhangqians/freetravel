@@ -13,12 +13,8 @@ function isUserInformationLegal(data) {
   const regEmail = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/;
   const regPhone = /^(\+86)?(1[0-9]{10})$/;
 
-  console.log(regEmail.test(data.email));
-  console.log(regPhone.test(data.phone) + 'Phone');
 
   if (data.name == '' || data.password == '' || data.email == '' || data.phone == '') {
-    console.log(data);
-    console.log('--data is null--');
     return {legal: false, message: 'Please finish the form'};
   }
   else if (regEmail.test(data.email) == false) {
@@ -32,13 +28,9 @@ function isUserInformationLegal(data) {
 
 
 router.post('/', function (req, res, next) {
-  debugger;
   getUserInformation(req);
   const data = getUserInformation(req);
-  console.log('data:' + data.name);
   const legal = isUserInformationLegal(data);
-  console.log('legal:' + legal);
-  console.log(legal.message);
   if (legal.legal == true) {
     User.findOne({name: data.name}, function (err, docs) {
       if (err) return next(err);
@@ -60,9 +52,6 @@ router.post('/', function (req, res, next) {
 
         res.status(409).send('Same name in db.');
       }
-      // else {
-      //     res.status(201).send('?');
-      // }
     });
   }
   else {
@@ -72,8 +61,4 @@ router.post('/', function (req, res, next) {
 
 });
 
-
 export default router;
-
-
-

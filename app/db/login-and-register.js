@@ -43,6 +43,7 @@ exports.login = function (req, res) {
   });
 };
 
+
 exports.remove = function (req, res) {
   let name = req.body.name;
   let password = req.body.password;
@@ -53,4 +54,4 @@ exports.remove = function (req, res) {
     if (e) res.send(e.message);
     else res.send("删除成功");
   });
-}
+};
