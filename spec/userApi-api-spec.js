@@ -61,7 +61,7 @@ describe('uer test', () => {
     });
 
 
-    fit('#3 uncompleted', (done) => {
+    it('#3 uncompleted', (done) => {
         async.waterfall([
             (cb) =>request(app).post('/api/user').send({
                 name: 'lxy',
@@ -74,14 +74,13 @@ describe('uer test', () => {
 
 
     it('#4 email wrong', (done) => {
-        request(app)
-            .post('/api/user')
-            .send({name: 'zqs', password: 'zyn129', email: 'yyn123163.com', phone: '18292080565'})
-            .expect(400, function (err, data) {
-                finish(done)(err);
-            });
+        async.waterfall([
+            (cb) =>request(app).post('/api/user').send(
+                {name: 'zqs', password: 'zyn129', email: 'yyn123163.com', phone: '18292080565'}
+            ).expect(400, cb)
+        ], finish(done));
     });
-
+    
     it('#5 phone formation wrong', (done) => {
         request(app)
             .post('/api/user')
