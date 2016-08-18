@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import request from 'superagent';
-require('../css/register.css');
+import {hashHistory} from 'react-router'
+require("../css/register.css");
+
 export default class Register extends Component {
     constructor(props) {
         super(props);
@@ -14,7 +16,7 @@ export default class Register extends Component {
     }
 
     render() {
-        return <form onSubmit={this.onSumbit.bind(this)}>
+        return <form onSubmit={this._onSubmit.bind(this)}>
             <div className="register">
                 <div className="title"><h3>欢迎注册</h3></div>
                 <div className="form-group">
@@ -22,77 +24,76 @@ export default class Register extends Component {
                     <input type="name" className="form-control" id="name"
                            placeholder="请设置用户名" required
                            value={this.state.name}
-                           onChange={this.onHandlerName.bind(this)}/>
+                           onChange={this._onNameChange.bind(this)}/>
                 </div>
                 <div className="form-group">
                     <label>邮箱</label>
                     <input type="email" className="form-control" id="email"
                            placeholder="请输入邮箱" required
                            value={this.state.email}
-                           onChange={this.onHandlerEmail.bind(this)}/>
+                           onChange={this._onEmailChange.bind(this)}/>
                 </div>
                 <div className="form-group">
                     <label>手机号码</label>
                     <input type="tel" className="form-control" id="phone"
                            placeholder="请输入手机号码" required pattern="^(\+86)?(1[0-9]{10})$"
                            value={this.state.phone}
-                           onChange={this.onHandlerPhone.bind(this)}/>
+                           onChange={this._onPhoneChange.bind(this)}/>
                 </div>
                 < div className="form-group">
                     <label>设置密码</label>
                     <input type="password" className="form-control" id="password"
                            placeholder="请输入密码(至少六位)" required pattern="^.{6,18}$"
                            value={this.state.password}
-                           onChange={this.onHandlerPassword.bind(this)}/>
+                           onChange={this._onPasswordChange.bind(this)}/>
                 </div>
                 <div className="form-group">
                     <label>确认密码</label>
                     <input type="password" className="form-control" id="confirm-password"
                            placeholder="请确认密码(至少六位)" required pattern="^.{6,18}$"
                            value={this.state.confirmPassword}
-                           onChange={this.onHandlerConfirmPassword.bind(this)}/>
+                           onChange={this._onConfirmPasswordChange.bind(this)}/>
                 </div>
                 <input type="submit" value="注册" className="btn btn-primary"/>
-                <span>有账号?<a className="to_register">登陆 </a></span>
+                <span>有账号?<a className="to-register">登陆 </a></span>
             </div>
         </form>
     }
 
-    onHandlerName(event) {
+    _onNameChange(event) {
         this.setState({
             name: event.target.value
         });
     }
 
-    onHandlerEmail(event) {
+    _onEmailChange(event) {
         this.setState({
             email: event.target.value
         })
     }
 
-    onHandlerPhone(event) {
+    _onPhoneChange(event) {
         this.setState({
-                phone: event.target.value
-            }
-        )
+            phone: event.target.value
+        })
     }
 
-    onHandlerPassword(event) {
+    _onPasswordChange(event) {
         this.setState({
             password: event.target.value
         })
     }
 
-    onHandlerConfirmPassword(event) {
+    _onConfirmPasswordChange(event) {
         this.setState({
             confirmPassword: event.target.value
         })
     }
 
-    onSumbit(event) {
+    _onSubmit(event) {
         event.preventDefault();
-        if (this.state.password != this.state.confirmPassword) {
-            alert('confirm-password and password is not the same one!');
+        if (this.state.password !== this.state.confirmPassword) {
+            alert('请重新输入密码!');
         }
         else {
             request.post('/api/user')
@@ -101,20 +102,18 @@ export default class Register extends Component {
                     email: this.state.email,
                     phone: this.state.phone,
                     password: this.state.password,
-                    confirmPassword: this.state.confirmPassword
                 })
                 .end((err, res) => {
-                    if (err) {
-                        alert(res.statusCode + ',' + res.text);
-                        return console.error(err + ',' + res.text)
+                    if (res.statusCode === 400) {
+                        alert("请检查输入的数据是否合法!");
                     }
-                    console.log(res.statusCode);
-                    if (res.statusCode == 201) {
-                        alert(res.statusCode + ",register success!");
-                        self.location = '/#/indexRent'
+                    if (res.statusCode === 409) {
+                        alert("用户名已存在!");
                     }
-                    console.log(res.text);
-
+                    if (res.statusCode === 201) {
+                        alert("注册成功!");
+                        hashHistory.push('/index-rent');
+                    }
                 });
         }
 
