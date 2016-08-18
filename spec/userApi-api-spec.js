@@ -19,7 +19,7 @@ describe('uer test', () => {
         db.close(finish(done));
     });
 
-    it('init', (done)=> {
+    fit('init', (done)=> {
         async.waterfall([
             (cb) => request(app).post('/register').expect(200, cb),
             (res, cb) => User.find(cb),
