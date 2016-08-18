@@ -4,29 +4,41 @@ import app from '../app/server';
 import finish from './finish';
 import {User} from '../app/db/schema';
 
-const before = function (done) {
-    User.find().remove(finish(done));
-};
 
 describe('uer test', () => {
+    beforeEach((done)=> {
+        User.find().remove(finish(done));
+    });
+
     it('#1 getted right', (done)=> {
-        before(done);
         request(app)
             .post('/api/user')
             .send({name: 'zyn', password: 'zyn199', email: 'zyn123@163.com', phone: '18292080565'})
             .expect(201, function (err, data) {
-                console.error(err);
-                    finish(done)(err);
+                finish(done)(err);
             });
     });
 
     it('#2 repeat name', (done) => {
-        request(app)
-            .post('/api/user')
-            .send({name: 'zyn', password: 'zyn199', email: 'zyn123@163.com', phone: '18292080565'})
-            .expect(409, function (err, data) {
-                finish(done)(err);
+        new User({
+            name: 'zyn',
+            password: 'zyn199',
+            email: 'zyn123@163.com',
+            phone: '18292080565'
+        }).save(function (err, data) {
+            if (err) return done.fail(err);
+
+            User.find(function (err, users) {
+                expect(users.length).toEqual(1);
+
+                request(app)
+                    .post('/api/user')
+                    .send({name: 'zyn', password: 'zyn199', email: 'zyn123@163.com', phone: '18292080565'})
+                    .expect(409, function (err, data) {
+                        finish(done)(err);
+                    });
             });
+        });
     });
 
 
