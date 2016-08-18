@@ -1,6 +1,6 @@
 import express from 'express';
 import {User} from '../db/schema';
-let router = express.Router();
+const router = express.Router();
 import {validateEmail, validatePhone} from '../shared/user-field-validation'
 
 
