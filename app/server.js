@@ -17,17 +17,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(webpackDevMiddleware(compiler, {
-    noInfo: true,
-    lazy: false,
-    watchOptions: {
-        aggregateTimeout: 300,
-        poll: true
-    },
-    publicPath: webpackConfig.output.publicPath
+  noInfo: true,
+  lazy: false,
+  watchOptions: {
+    aggregateTimeout: 300,
+    poll: true
+  },
+  publicPath: webpackConfig.output.publicPath
 }));
 
 app.use(webpackHotMiddleware(compiler, {
-    log: console.log
+  log: console.log
 }));
 
 app.use(express.static('./public'));
@@ -35,13 +35,14 @@ app.use(express.static('./public'));
 app.use('/api', apiRouter);
 
 app.get('/hello', function (req, res) {
-    res.send('Index, world!');
+  res.send('Index, world!');
 });
 
 app.post("/register", routes.insert);
 app.post('/login', routes.login);
 
 app.listen(3000, function () {
-    db.connect();
-    console.log('Listening on 3000');
+  db.connect();
+  console.log('Listening on 3000');
 });
+export default app;
