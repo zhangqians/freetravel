@@ -41,7 +41,7 @@ describe('uer test', () => {
     });
 
 
-    fit('#2 repeat name', (done) => {
+    it('check repeat name', (done) => {
         async.waterfall([
             (cb) => new User({
                 name: 'xy',
@@ -61,13 +61,15 @@ describe('uer test', () => {
     });
 
 
-    it('#3 uncompleted', (done) => {
-        request(app)
-            .post('/api/user')
-            .send({name: 'lxy', password: 'zyn129', email: 'yyn123@163.com', phone: ''})
-            .expect(400, function (err, data) {
-                finish(done)(err);
-            });
+    fit('#3 uncompleted', (done) => {
+        async.waterfall([
+            (cb) =>request(app).post('/api/user').send({
+                name: 'lxy',
+                password: 'zyn129',
+                email: 'yyn123@163.com',
+                phone: ''
+            }).expect(400, cb)
+        ], finish(done));
     });
 
 
