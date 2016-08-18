@@ -28,17 +28,18 @@ describe('uer test', () => {
         ], finish(done));
     });
 
-    
-    it('#1 getted right', (done)=> {
-        request(app)
-            .post('/api/user')
-            .send({name: 'xy', password: 'zyn199', email: 'zyn123@163.com', phone: '18292080565'})
-            .expect(201, function (err, data) {
-                finish(done)(err);
-            });
-
+    fit('saved json in mongodb', (done)=> {
+        async.waterfall([
+            (cb) =>request(app).post('/api/user').send({
+                name: 'xy',
+                password: 'zyn199',
+                email: 'zyn123@163.com',
+                phone: '18292080565'
+            }).expect(201, cb)
+        ], finish(done));
     });
 
+    
     it('#2 repeat name', (done) => {
         new User({
             name: 'xy',
