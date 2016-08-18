@@ -14,6 +14,7 @@ describe('uer test', () => {
             User.find().remove(finish(done));
         })
     });
+
     afterEach((done) => {
         db.close(finish(done));
     });
@@ -28,7 +29,7 @@ describe('uer test', () => {
         ], finish(done));
     });
 
-    fit('saved json in mongodb', (done)=> {
+    it('saved json in mongodb', (done)=> {
         async.waterfall([
             (cb) =>request(app).post('/api/user').send({
                 name: 'xy',
@@ -39,27 +40,24 @@ describe('uer test', () => {
         ], finish(done));
     });
 
-    
-    it('#2 repeat name', (done) => {
-        new User({
-            name: 'xy',
-            password: 'zyn199',
-            email: 'zyn123@163.com',
-            phone: '18292080565'
-        }).save(function (err, data) {
-            if (err) return done.fail(err);
 
-            User.find(function (err, users) {
-                expect(users.length).toEqual(1);
-
-                request(app)
-                    .post('/api/user')
-                    .send({name: 'xy', password: 'zyn199', email: 'zyn123@163.com', phone: '18292080565'})
-                    .expect(409, function (err, data) {
-                        finish(done)(err);
-                    });
-            });
-        });
+    fit('#2 repeat name', (done) => {
+        async.waterfall([
+            (cb) => new User({
+                name: 'xy',
+                password: 'zyn199',
+                email: 'zyn123@163.com',
+                phone: '18292080565'
+            }).save((err, data) => {
+                if (err) return done.fail(err);
+                request(app).post('/api/user').send({
+                    name: 'xy',
+                    password: 'zyn199',
+                    email: 'zyn123@163.com',
+                    phone: '18292080565'
+                }).expect(409, cb)
+            })
+        ], finish(done));
     });
 
 
