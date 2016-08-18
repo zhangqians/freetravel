@@ -3,11 +3,18 @@ import request from 'supertest';
 import app from '../app/server';
 import finish from './finish';
 import {User} from '../app/db/schema';
+import db from '../app/db/db';
 
 
 describe('uer test', () => {
     beforeEach((done)=> {
-        User.find().remove(finish(done));
+        db.connect('test', (err) => {
+            if (err) return done.fail(err);
+            User.find().remove(finish(done));
+        })
+    });
+    afterEach((done) => {
+        db.close(finish(done));
     });
 
     it('#1 getted right', (done)=> {
