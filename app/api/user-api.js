@@ -1,36 +1,51 @@
 import express from 'express';
 import {User} from '../db/schema';
+let router = express.Router();
+import {validateEmail, validatePhone} from '../shared/user-field-validation'
 
 
-const router = express.Router();
+function existEmpty(data) {
+    if (data.name == '' || data.password == '' || data.email == '' || data.phone == '') {
+        console.log(data);
+        console.log('--data is null--');
+        return false;
+    }
+    return true;
+}
 
-function getUserInformation(req) {
-    const data = req.body;
-    return data;
+function isEmailRight(data) {
+    if (validateEmail(data) == false) {
+        return false;
+    }
+    return true;
+}
+
+function isPhoneRight(data) {
+    if (validatePhone(data) == false) {
+        return false;
+    }
+    return true;
 }
 
 function isUserInformationLegal(data) {
-    const regEmail = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/;
-    const regPhone = /^(\+86)?(1[0-9]{10})$/;
+    const isEmpty = existEmpty(data);
+    const isEmail = isEmailRight(data);
+    const isPhone = isPhoneRight(data);
 
-
-    if (data.name == '' || data.password == '' || data.email == '' || data.phone == '') {
+    if(isEmpty === false){
         return {legal: false, message: 'Please finish the form'};
-    }
-    else if (regEmail.test(data.email) == false) {
+    }else if(isEmail === false){
         return {legal: false, message: 'The email is error'};
-    }
-    else if (data.phone.length != 11 || regPhone.test(data.phone) == false) {
+    }else if(isPhone === false){
         return {legal: false, message: 'The phone number is error'};
     }
-    else return {legal: true, message: 'legal is true'};
+    return {legal: true, message: 'legal is true'};
 }
 
-
 router.post('/', function (req, res, next) {
-    getUserInformation(req);
-    const data = getUserInformation(req);
+    const data = req.body;
     const legal = isUserInformationLegal(data);
+
     if (legal.legal == true) {
         User.findOne({name: data.name}, function (err, docs) {
             if (err) return next(err);
@@ -45,11 +60,9 @@ router.post('/', function (req, res, next) {
                 user.save(function (err) {
                     console.log('save status:', err ? 'failed' : 'success');
                     res.status(201).send('register success');
-
                 });
             }
             else if (docs != null) {
-
                 res.status(409).send('Same name in db.');
             }
         });
@@ -57,8 +70,6 @@ router.post('/', function (req, res, next) {
     else {
         res.status(400).send(legal.message);
     }
-
-
 });
 
 export default router;

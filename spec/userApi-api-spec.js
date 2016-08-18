@@ -20,7 +20,7 @@ describe('uer test', () => {
     it('#1 getted right', (done)=> {
         request(app)
             .post('/api/user')
-            .send({name: 'zyn', password: 'zyn199', email: 'zyn123@163.com', phone: '18292080565'})
+            .send({name: 'xy', password: 'zyn199', email: 'zyn123@163.com', phone: '18292080565'})
             .expect(201, function (err, data) {
                 finish(done)(err);
             });
@@ -28,7 +28,7 @@ describe('uer test', () => {
 
     it('#2 repeat name', (done) => {
         new User({
-            name: 'zyn',
+            name: 'xy',
             password: 'zyn199',
             email: 'zyn123@163.com',
             phone: '18292080565'
@@ -40,7 +40,7 @@ describe('uer test', () => {
 
                 request(app)
                     .post('/api/user')
-                    .send({name: 'zyn', password: 'zyn199', email: 'zyn123@163.com', phone: '18292080565'})
+                    .send({name: 'xy', password: 'zyn199', email: 'zyn123@163.com', phone: '18292080565'})
                     .expect(409, function (err, data) {
                         finish(done)(err);
                     });
