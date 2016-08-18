@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import request from 'superagent';
+require('../css/register.css');
 export default class Register extends Component {
     constructor(props) {
         super(props);
