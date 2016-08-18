@@ -19,7 +19,7 @@ describe('uer test', () => {
         db.close(finish(done));
     });
 
-    it('init', (done)=> {
+    fit('init', (done)=> {
         async.waterfall([
             (cb) => request(app).post('/register').expect(200, cb),
             (res, cb) => User.find(cb),
@@ -61,7 +61,7 @@ describe('uer test', () => {
     });
 
 
-    it('#3 uncompleted', (done) => {
+    it('data is uncompleted', (done) => {
         async.waterfall([
             (cb) =>request(app).post('/api/user').send({
                 name: 'lxy',
@@ -73,40 +73,40 @@ describe('uer test', () => {
     });
 
 
-    it('#4 email wrong', (done) => {
+    it(' wrong email formation', (done) => {
         async.waterfall([
             (cb) =>request(app).post('/api/user').send(
                 {name: 'zqs', password: 'zyn129', email: 'yyn123163.com', phone: '18292080565'}
             ).expect(400, cb)
         ], finish(done));
     });
-    
-    it('#5 phone formation wrong', (done) => {
-        request(app)
-            .post('/api/user')
-            .send({name: 'qf', password: 'zyn129', email: 'yyn@123163.com', phone: '28292080565'})
-            .expect(400, function (err, data) {
-                finish(done)(err);
-            });
+
+    describe('wrong phone formation', () => {
+
+        it('wrong first number', (done) => {
+            async.waterfall([
+                (cb) =>request(app).post('/api/user').send(
+                    {name: 'qf', password: 'zyn129', email: 'yyn@123163.com', phone: '28292080565'}
+                ).expect(400, cb)
+            ], finish(done));
+        });
+
+        it('wrong length', (done) => {
+            async.waterfall([
+                (cb) =>request(app).post('/api/user').send(
+                    {name: 'xy', password: 'zyn129', email: 'yyn123@163.com', phone: '1829208065'}
+                ).expect(400, cb)
+            ], finish(done));
+        });
+
+        it('wrong content', (done) => {
+            async.waterfall([
+                (cb) =>request(app).post('/api/user').send(
+                    {name: 'ltjn', password: 'zyn129', email: 'yyn123@163.com', phone: '182920805*5'}
+                ).expect(400, cb)
+            ], finish(done));
+        });
     });
 
-
-    it('#5.1', (done) => {
-        request(app)
-            .post('/api/user')
-            .send({name: 'xy', password: 'zyn129', email: 'yyn123@163.com', phone: '1829208065'})
-            .expect(400, function (err, data) {
-                finish(done)(err);
-            });
-    });
-
-    it('#6 phone content wrong', (done) => {
-        request(app)
-            .post('/api/user')
-            .send({name: 'ltjn', password: 'zyn129', email: 'yyn123@163.com', phone: '182920805*5'})
-            .expect(400, function (err, data) {
-                finish(done)(err);
-            });
-    });
 });
 
