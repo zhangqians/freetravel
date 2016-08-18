@@ -1,8 +1,8 @@
 import express from 'express';
 import {User} from '../db/schema';
+let router = express.Router();
 import {validateEmail, validatePhone} from '../shared/user-field-validation'
 
-const router = express.Router();
 
 function existEmpty(data) {
     if (data.name == '' || data.password == '' || data.email == '' || data.phone == '') {
@@ -20,10 +20,6 @@ function isEmailRight(data) {
     return true;
 }
 
-<<<<<<< ff99b737c7972498b640e42208743c68672abf7a:app/api/userApi.js
-
-    if (data.name == '' || data.password == '' || data.email == '' || data.phone == '') {
-=======
 function isPhoneRight(data) {
     if (validatePhone(data) == false) {
         return false;
@@ -37,7 +33,6 @@ function isUserInformationLegal(data) {
     const isPhone = isPhoneRight(data);
 
     if(isEmpty === false){
->>>>>>> modify user-api:app/api/user-api.js
         return {legal: false, message: 'Please finish the form'};
     }else if(isEmail === false){
         return {legal: false, message: 'The email is error'};
@@ -48,15 +43,9 @@ function isUserInformationLegal(data) {
 }
 
 router.post('/', function (req, res, next) {
-<<<<<<< ff99b737c7972498b640e42208743c68672abf7a:app/api/userApi.js
-    getUserInformation(req);
-    const data = getUserInformation(req);
-    const legal = isUserInformationLegal(data);
-=======
     const data = req.body;
     const legal = isUserInformationLegal(data);
 
->>>>>>> modify user-api:app/api/user-api.js
     if (legal.legal == true) {
         User.findOne({name: data.name}, function (err, docs) {
             if (err) return next(err);
@@ -71,7 +60,6 @@ router.post('/', function (req, res, next) {
                 user.save(function (err) {
                     console.log('save status:', err ? 'failed' : 'success');
                     res.status(201).send('register success');
-
                 });
             }
             else if (docs != null) {
