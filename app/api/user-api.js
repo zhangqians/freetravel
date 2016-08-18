@@ -6,8 +6,6 @@ import {validateEmail, validatePhone} from '../shared/user-field-validation'
 
 function existEmpty(data) {
     if (data.name == '' || data.password == '' || data.email == '' || data.phone == '') {
-        console.log(data);
-        console.log('--data is null--');
         return false;
     }
     return true;

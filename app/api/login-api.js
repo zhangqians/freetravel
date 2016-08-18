@@ -13,7 +13,6 @@ router.post('/', (req, res, next) => {
             if (err) return next(err);
 
             if (userData) {
-                // res.json({name: userData.name, type: 'success'});
                 res.status(201).send('login success');
             } else {
                 res.status(400).send('name or password is wrong');

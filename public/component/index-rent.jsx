@@ -16,7 +16,7 @@ class RentIndex extends React.Component {
 
             <div className="rent-right">
                 <div className="img-main">
-                    <Link to="/goodsDetails"><img src={Tent001Img}/><p>帐篷001</p></Link>
+                    <Link to="/goods-details"><img src={Tent001Img}/><p>帐篷001</p></Link>
                 </div>
                 <div className="img">
                     <a className="img-01" href="#"><img src={Tent02Img}/><p>帐篷002</p></a>
