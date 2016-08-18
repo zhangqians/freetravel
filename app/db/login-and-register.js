@@ -1,11 +1,5 @@
-const mongoose = require('mongoose');
+import {User} from './schema';
 
-const User = mongoose.model('User', {
-    name: String,
-    password: String,
-    email: String,
-    phone: String,
-});
 
 exports.insert = function (req, res) {
     let name = req.body.name;
@@ -42,13 +36,13 @@ exports.login = function (req, res) {
         if (err) res.send(err.message);
 
         if (docs != null) {
-            // res.send('success');
             res.json({name: docs.name, type: 'success'});
         } else {
             res.send('error');
         }
     });
 };
+
 
 exports.remove = function (req, res) {
     let name = req.body.name;
@@ -60,4 +54,4 @@ exports.remove = function (req, res) {
         if (e) res.send(e.message);
         else res.send("删除成功");
     });
-}
+};
