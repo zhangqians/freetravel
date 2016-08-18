@@ -4,6 +4,7 @@ import app from '../app/server';
 import finish from './finish';
 import {User} from '../app/db/schema';
 import db from '../app/db/db';
+import async from 'async';
 
 
 describe('uer test', () => {
@@ -17,6 +18,17 @@ describe('uer test', () => {
         db.close(finish(done));
     });
 
+    it('init', (done)=> {
+        async.waterfall([
+            (cb) => request(app).post('/register').expect(200, cb),
+            (res, cb) => User.find(cb),
+            (user, cb) => {
+                cb();
+            }
+        ], finish(done));
+    });
+
+    
     it('#1 getted right', (done)=> {
         request(app)
             .post('/api/user')
@@ -24,6 +36,7 @@ describe('uer test', () => {
             .expect(201, function (err, data) {
                 finish(done)(err);
             });
+
     });
 
     it('#2 repeat name', (done) => {
