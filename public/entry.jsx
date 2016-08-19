@@ -18,9 +18,9 @@ const router = <Router history={hashHistory}>
         <IndexRoute component={Index}/>
         <Route path='/login' component={SignIn}/>
         <Route path='/register' component={Register}/>
-        <Route path='/indexRent' component={IndexRent}/>
+        <Route path='/index-rent' component={IndexRent}/>
         <Route path='/rent' component={Rent}/>
-        <Route path='/goodsDetails' component={GoodsDetails}/>
+        <Route path='/goods-details' component={GoodsDetails}/>
         <Route path='/orderPage' component={OrderPage}/>
         <Route path='/personalPage' />
     </Route>
