@@ -42,8 +42,6 @@ export default class SignIn extends React.Component {
                         </span>
                         <span className="pull-right">
                             <a className="setTextColor">注册</a>
-                            {/*<a className="sign-in" onClick={this.login}>登录</a>*/}
-                            {/*<input type="submit" value='登录' className="btn btn-primary">登录</input>*/}
                             <input type="submit" value="登录" className="btn btn-primary"/>
 
                         </span>

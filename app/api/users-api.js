@@ -4,66 +4,70 @@ const router = express.Router();
 import {validateEmail, validatePhone} from '../shared/user-field-validation'
 
 
-function existEmpty(data) {
-    if (data.name == '' || data.password == '' || data.email == '' || data.phone == '') {
-        return false;
-    }
-    return true;
+function existEmpty(userData) {
+    return !(userData.name == '' || userData.password == '' || userData.email == '' || userData.phone == '');
 }
 
-function isEmailRight(data) {
-    if (validateEmail(data) == false) {
-        return false;
-    }
-    return true;
+function isEmailRight(userData) {
+    return validateEmail(userData) != false;
 }
 
-function isPhoneRight(data) {
-    if (validatePhone(data) == false) {
-        return false;
-    }
-    return true;
+function isPhoneRight(userData) {
+    return validatePhone(userData) != false;
 }
 
-function isUserInformationLegal(data) {
-    const isEmpty = existEmpty(data);
-    const isEmail = isEmailRight(data);
-    const isPhone = isPhoneRight(data);
+function isUserInformationLegal(userData) {
+    const isEmpty = existEmpty(userData);
+    const isEmail = isEmailRight(userData);
+    const isPhone = isPhoneRight(userData);
 
-    if(isEmpty === false){
-        return {legal: false, message: 'Please finish the form'};
-    }else if(isEmail === false){
-        return {legal: false, message: 'The email is error'};
-    }else if(isPhone === false){
-        return {legal: false, message: 'The phone number is error'};
+    if (isEmpty === false) {
+        return {type: false, message: 'Please finish the form'};
+    } else if (isEmail === false) {
+        return {type: false, message: 'The email is error'};
+    } else if (isPhone === false) {
+        return {type: false, message: 'The phone number is error'};
     }
-    return {legal: true, message: 'legal is true'};
+    return {type: true, message: 'type is true'};
+}
+
+
+function isExist(userData, next, callback) {
+    User.findOne({name: userData.name}, function (err, doc) {
+        if (err) return next(err);
+
+        callback(null, doc);
+    });
 }
 
 router.post('/', function (req, res, next) {
-    const data = req.body;
-    const legal = isUserInformationLegal(data);
+    const userData = req.body;
+    const legal = isUserInformationLegal(userData);
 
-    if (legal.legal == true) {
-        User.findOne({name: data.name}, function (err, docs) {
+
+    if (legal.type === true) {
+
+        isExist(userData, next, function (err, doc) {
             if (err) return next(err);
-
-            if (docs == null) {
+            if (doc === null) {
                 var user = new User({
-                    name: data.name,
-                    password: data.password,
-                    email: data.email,
-                    phone: data.phone
+                    name: userData.name,
+                    password: userData.password,
+                    email: userData.email,
+                    phone: userData.phone
                 });
                 user.save(function (err) {
+                    if (err) return next(err);
                     console.log('save status:', err ? 'failed' : 'success');
                     res.status(201).send('register success');
                 });
             }
-            else if (docs != null) {
-                res.status(409).send('Same name in db.');
+            else if (doc != null) {
+                res.status(409).send('the name is exist');
             }
         });
+
+
     }
     else {
         res.status(400).send(legal.message);
