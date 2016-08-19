@@ -12,10 +12,10 @@ router.post('/', (req, res, next) => {
         User.findOne({name}, (err, userData) => {
             if (err) return next(err);
 
-            if (userData.password === password) {
-                res.status(201).send('login success');
-            } else {
+            if (userData.password != password) {
                 res.status(401).send('name or password is wrong');
+            } else {
+                res.status(201).send('login success');
             }
         });
     }
