@@ -9,13 +9,13 @@ router.post('/', (req, res, next) => {
         res.status(400).send('name and password can not be null');
     }
     else {
-        User.findOne({name, password}, (err, userData) => {
+        User.findOne({name}, (err, userData) => {
             if (err) return next(err);
 
-            if (userData) {
+            if (userData.password === password) {
                 res.status(201).send('login success');
             } else {
-                res.status(400).send('name or password is wrong');
+                res.status(401).send('name or password is wrong');
             }
         });
     }
