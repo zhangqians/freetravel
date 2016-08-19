@@ -7,7 +7,7 @@ import db from '../app/db/db';
 import async from 'async';
 
 
-describe('uer test', () => {
+describe('uers test', () => {
     beforeEach((done)=> {
         db.connect('test', (err) => {
             if (err) return done.fail(err);
