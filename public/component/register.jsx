@@ -96,7 +96,7 @@ export default class Register extends Component {
             alert('请重新输入密码!');
         }
         else {
-            request.post('/api/user')
+            request.post('/api/users')
                 .send({
                     name: this.state.name,
                     email: this.state.email,

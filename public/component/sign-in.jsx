@@ -68,7 +68,7 @@ export default class SignIn extends React.Component {
 
     _onSubmit(event) {
         event.preventDefault();
-        request.post('/api/login')
+        request.post('/api/sessions')
             .send({
                 name: this.state.name,
                 password: this.state.password
