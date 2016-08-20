@@ -6,8 +6,7 @@ export default class PersonalPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: 'unknown',
-            password: 'unknown'
+            username: 'unknown',
         }
     }
 
@@ -25,16 +24,16 @@ export default class PersonalPage extends Component {
                     }
                 }
                 console.log("statusCode:"+res.statusCode);
-                const {name, password} = res.body;
-                this.setState({name, password});
+                const {username} = res.body;
+                this.setState({username});
             })
     }
 
     render() {
         return <div>
             <div>Personal Page</div>
-            <div>Username: {this.state.name}</div>
-            <div>Greeting: {this.state.password}</div>
+            <div>Username: {this.state.username}</div>
+            <div>Greeting: </div>
         </div>;
     }
 }
