@@ -1,4 +1,5 @@
 import App from './app.jsx';
+import PersonalPage from './component/personal-page.jsx';
 import OrderPage from './component/order.jsx';
 import Rent from './component/rent.jsx';
 import GoodsDetails from './component/rent-details.jsx';
@@ -22,7 +23,7 @@ const router = <Router history={hashHistory}>
         <Route path='/rent' component={Rent}/>
         <Route path='/goods-details' component={GoodsDetails}/>
         <Route path='/orderPage' component={OrderPage}/>
-        <Route path='/personalPage' />
+        <Route path='/personalPage' component={PersonalPage}/>
     </Route>
 </Router>;
 

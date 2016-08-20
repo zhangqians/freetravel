@@ -1,6 +1,7 @@
 import React from 'react';
 import request from 'superagent';
 import {hashHistory} from 'react-router'
+const cookieParser = require('cookie-parser');
 import '../css/sign-in.css';
 
 export default class SignIn extends React.Component {
@@ -13,6 +14,7 @@ export default class SignIn extends React.Component {
         }
 
     }
+
 
 
     render() {
