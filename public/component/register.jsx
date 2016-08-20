@@ -71,7 +71,6 @@ export default class Register extends Component {
             email: event.target.value
         })
     }
-
     _onPhoneChange(event) {
         this.setState({
             phone: event.target.value
@@ -122,8 +121,5 @@ export default class Register extends Component {
                     }
                 });
         }
-
     }
 }
-
-
