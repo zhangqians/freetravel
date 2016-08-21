@@ -11,6 +11,7 @@ import db from './db/db';
 var routes = require('./db/login-and-register.js');
 const app = express();
 const compiler = webpack(webpackConfig);
+<<<<<<< f7945fd67576aec31cb4dd16e0fad80323f6db9d
 <<<<<<< 0a8de6b65176db4c323ec8b9feb0fc78ee74b555
 <<<<<<< HEAD
 <<<<<<< e938abebb50a12ad3c1e0573b48e5479d123b068
@@ -27,11 +28,19 @@ app.use(cookieParser());
 >>>>>>> want-new
 >>>>>>> want-new
 =======
+=======
+<<<<<<< HEAD
+>>>>>>> rent exchange
 <<<<<<< 34d536a3d769599c1b9cd80dc09955b8b6f3dad5
 app.use(cookieParser());
 =======
 >>>>>>> rent exchange
+<<<<<<< f7945fd67576aec31cb4dd16e0fad80323f6db9d
 >>>>>>> modify rent css
+=======
+=======
+>>>>>>> want-new
+>>>>>>> rent exchange
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(webpackDevMiddleware(compiler, {
@@ -51,6 +60,7 @@ app.use('/api', apiRouter);
 app.get('/hello', function (req, res) {
   res.send('Index, world!');
 });
+<<<<<<< f7945fd67576aec31cb4dd16e0fad80323f6db9d
 <<<<<<< 0a8de6b65176db4c323ec8b9feb0fc78ee74b555
 <<<<<<< HEAD
 <<<<<<< e938abebb50a12ad3c1e0573b48e5479d123b068
@@ -67,11 +77,19 @@ app.post('/register', routes.insert);
 >>>>>>> want-new
 >>>>>>> want-new
 =======
+=======
+<<<<<<< HEAD
+>>>>>>> rent exchange
 <<<<<<< 34d536a3d769599c1b9cd80dc09955b8b6f3dad5
 
 app.post('/register', routes.insert);
 =======
+<<<<<<< f7945fd67576aec31cb4dd16e0fad80323f6db9d
 >>>>>>> modify rent css
+=======
+=======
+>>>>>>> want-new
+>>>>>>> rent exchange
 app.post("/register", routes.insert);
 >>>>>>> rent exchange
 app.post('/login', routes.login);
