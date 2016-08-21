@@ -120,9 +120,9 @@ class Picture extends React.Component {
                         </div>
                     </div>
 
-                {/*</div>*/}
+                    {/*</div>*/}
 
-                {/*<div className="row">*/}
+                    {/*<div className="row">*/}
                     <div className="col-sm-4 col-md-3">
                         <div className="thumbnail">
                             <img src={picture1} className="picture"/>
@@ -164,9 +164,9 @@ class Picture extends React.Component {
                         </div>
                     </div>
 
-                {/*</div>*/}
+                    {/*</div>*/}
 
-                {/*<div className="row">*/}
+                    {/*<div className="row">*/}
                     <div className="col-sm-4 col-md-3">
                         <div className="thumbnail">
                             <img src={picture1} className="picture"/>

@@ -23,7 +23,7 @@ export default class PersonalPage extends Component {
                         return alert('请先登录!');
                     }
                 }
-                console.log("statusCode:"+res.statusCode);
+                console.log("statusCode:" + res.statusCode);
                 const {username} = res.body;
                 this.setState({username});
             })
@@ -33,7 +33,7 @@ export default class PersonalPage extends Component {
         return <div>
             <div>Personal Page</div>
             <div>Username: {this.state.username}</div>
-            <div>Greeting: </div>
+            <div>Greeting:</div>
         </div>;
     }
 }
