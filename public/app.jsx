@@ -3,6 +3,7 @@ import LoginAndRegisterNavs from './component/login-and-register-nav.jsx';
 import TabsNavs from './component/navs.jsx';
 
 
+
 export default class Index extends React.Component {
     render() {
         return (
