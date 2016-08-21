@@ -6,19 +6,11 @@ class SelectArea extends React.Component {
 <<<<<<< 9f3b546da7359c0816cbeba6a1f4549b5cb89c27
   render() {
     return (
-
       <div className="select">
-        <div className="row row-select">
-          <div className="col-xs-2" id="search">搜索:</div>
-          <div className="input-group text-search">
-            <input type="text" className="form-control" placeholder="请输入商品"/>
-            <span className="input-group-btn">
-                                    <button className="btn btn-default btn-selete" type="button">搜索</button>
-                                 </span>
-          </div>
-        </div>
-      </div>
-    )
+        <p> 地区：陕西省</p>
+        <input className="col-md-4" placeholder="请输入需要查找的商品信息"/>
+        <button className="btn btn-success btn-m" type="submit">搜索</button>
+      </div>)
   }
 =======
     render() {
@@ -32,6 +24,7 @@ class SelectArea extends React.Component {
 >>>>>>> want-new
 }
 class Picture extends React.Component {
+<<<<<<< 489118e2c52ccf702db1c40be50869ee6484daf0
     constructor(props) {
         super(props);
         this.state = {
@@ -170,5 +163,58 @@ class Rent extends React.Component {
             </div>
         )
     }
+=======
+  constructor(props) {
+    super(props);
+    this.state = {
+      products:[]
+    };
+
+  }
+  componentDidMount() {
+    const self = this;
+    request
+      .get('/products', function (products) {
+        self.setState({
+          products: products
+        })
+      });
+  }
+
+  render() {
+    const productRow = this.state.products.map(product =>
+      (<div className="col-sm-4 col-md-3">
+          <div className="thumbnail">
+            <img src={product.imgName} className="picture"/>
+            <p>￥{product.price}/天;名称：{product.productName};商品描述：{product.prductDescrip}</p>
+            <p><a href="#" className="btn btn-primary" role="button">了解详情</a>
+            </p>
+          </div>
+        </div>
+      ));
+    return (
+
+      <div className="row image container-fluid ">
+        <div className="row row-rent">
+          {productRow}
+        </div>
+      </div>
+    )
+  }
+
+
+
+
+}
+class Rent extends React.Component {
+  render() {
+    return (
+      <div>
+        <SelectArea />
+        <Picture />
+      </div>
+    )
+  }
+>>>>>>> rent exchange
 }
 export default Rent;
