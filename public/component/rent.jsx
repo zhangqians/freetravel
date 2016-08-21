@@ -1,15 +1,8 @@
-import React from 'react';
-import picture1 from "../images/goods/digital-single-lens-reflex-001.jpg";
-import Image2 from "../images/goods/digital-single-lens-reflex-002.jpg";
-import Image3 from "../images/goods/mountain-bike-cycling-001.jpg";
-import Image4 from "../images/goods/mountain-bike-cycling-002.jpg";
-import Tent1 from "../images/goods/tent-004.jpg";
-import Tent2 from "../images/goods/tent-005.jpg";
-import Tent3 from "../images/goods/tent-003.jpg";
-import Knapsack1 from "../images/goods/knapsack-001.jpg";
-
+import React, {Component}from 'react';
+import request from 'superagent'
 import "../css/rent.css"
 class SelectArea extends React.Component {
+<<<<<<< 9f3b546da7359c0816cbeba6a1f4549b5cb89c27
   render() {
     return (
 
@@ -201,6 +194,59 @@ class Picture extends React.Component {
       </div>
     )
   }
+=======
+    render() {
+        return (
+            <div className="select">
+                <p> 地区：陕西省</p>
+                <input className="col-md-4" placeholder="请输入需要查找的商品信息"/>
+                <button className="btn btn-success btn-m" type="submit">搜索</button>
+            </div>)
+    }
+}
+class Picture extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            products:[]
+        };
+
+    }
+    componentDidMount() {
+        const self = this;
+        request
+        .get('/products', function (products) {
+            self.setState({
+                products: products
+            })
+        });
+    }
+
+    render() {
+        const productRow = this.state.products.map(product =>
+             (<div className="col-sm-4 col-md-3">
+                    <div className="thumbnail">
+                        <img src={product.imgName} className="picture"/>
+                        <p>￥{product.price}/天;名称：{product.productName};商品描述：{product.prductDescrip}</p>
+                        <p><a href="#" className="btn btn-primary" role="button">了解详情</a>
+                        </p>
+                    </div>
+                </div>
+        ));
+        return (
+
+            <div className="row image container-fluid ">
+                <div className="row row-rent">
+                    {productRow}
+                </div>
+            </div>
+        )
+    }
+
+
+
+
+>>>>>>> rent exchange
 }
 class Rent extends React.Component {
   render() {
