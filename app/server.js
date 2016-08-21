@@ -6,16 +6,11 @@ import express from 'express';
 import apiRouter from './api/api.js';
 import bodyParser from "body-parser";
 import db from './db/db';
-
-
 var routes = require('./db/login-and-register.js');
-
 const app = express();
 const compiler = webpack(webpackConfig);
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-
 app.use(webpackDevMiddleware(compiler, {
     noInfo: true,
     lazy: false,
@@ -25,19 +20,14 @@ app.use(webpackDevMiddleware(compiler, {
     },
     publicPath: webpackConfig.output.publicPath
 }));
-
 app.use(webpackHotMiddleware(compiler, {
     log: console.log
 }));
-
 app.use(express.static('./public'));
-
 app.use('/api', apiRouter);
-
 app.get('/hello', function (req, res) {
     res.send('Index, world!');
 });
-
 app.post("/register", routes.insert);
 app.post('/login', routes.login);
 if (require.main === module) {
@@ -48,5 +38,4 @@ if (require.main === module) {
         console.log('Listening on 3000');
     });
 }
-
 export default app;
