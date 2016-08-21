@@ -1,8 +1,8 @@
 import React from 'react';
 import request from 'superagent';
 import {hashHistory} from 'react-router'
-const cookieParser = require('cookie-parser');
 import '../css/sign-in.css';
+
 
 export default class SignIn extends React.Component {
 
@@ -14,7 +14,6 @@ export default class SignIn extends React.Component {
         }
 
     }
-
 
 
     render() {
@@ -45,9 +44,7 @@ export default class SignIn extends React.Component {
                         <span className="pull-right">
                             <a className="setTextColor">注册</a>
                             <input type="submit" value="登录" className="btn btn-primary"/>
-
                         </span>
-
                     </p>
                 </div>
             </div>
@@ -76,7 +73,7 @@ export default class SignIn extends React.Component {
             .end((err, res) => {
                 if (res.statusCode === 201) {
                     alert('login success');
-                    $("#div1").html('Welcome:' + '<a>' + this.state.name + '</a>');
+                    $("#div1").html('Welcome:' + '<a href="/#/personalPage">' + this.state.name + '</a>');
                     hashHistory.push('/index-rent');
                 } else if (res.statusCode === 400 && res.text == 'name and password can not be null') {
                     alert(res.text);

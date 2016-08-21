@@ -20,7 +20,7 @@ class Nav extends React.Component {
                         <li className="li"><Link to="#">个性服务</Link></li>
                         <li className="li"><Link to="#">驴友匹配</Link></li>
                         <li className="li"><Link to="#">一站到底</Link></li>
-                        <li className="li"><Link to="#">关于我们</Link></li>
+                        <li className="li"><Link to="/personalPage">个人中心</Link></li>
                     </ul>
                 </div>
             </nav>

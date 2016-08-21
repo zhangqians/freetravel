@@ -5,17 +5,22 @@ import _ from 'lodash';
 
 const router = express.Router();
 
-router.get('/', function (req, res, next) {
+router.get('/', function (req, res) {
     const token = req.cookies['token'];
 
-    validateToken(token, next, function (err, isValidateToken) {
-        if (err) return next(err);
-        if (isValidateToken) {
-            const username = getUsernameFromToken(token);
-            return res.json({username});
-        }
-        res.sendStatus(401);
-    });
+    if (_.isEmpty(token)) {
+        return res.sendStatus(401);
+    }
+    else {
+        validateToken(token, function (err, isValidateToken) {
+            if (err) return next(err);
+            if (isValidateToken) {
+                const username = getUsernameFromToken(token);
+                return res.json({username});
+            }
+            return res.sendStatus(401);
+        });
+    }
 });
 
 function generateToken(name, password) {
@@ -27,12 +32,12 @@ function getUsernameFromToken(token) {
     return token.substring(0, separatorIndex);
 }
 
-function validateToken(token, next, callback) {
+function validateToken(token, callback) {
     if (token === null || token.length === 0 || !token.includes(':')) {
-        return false;
+        callback(null, false);
     }
     const name = getUsernameFromToken(token);
-    findUser(name, next, function (err, user) {
+    findUser(name, function (err, user) {
         if (err) return next(err);
         if (user) {
             const {name, password} = user;
@@ -41,7 +46,7 @@ function validateToken(token, next, callback) {
     });
 }
 
-function findUser(name, next, callback) {
+function findUser(name, callback) {
     User.findOne({name}, (err, userData) => {
         if (err) return next(err);
         callback(null, userData);
@@ -79,4 +84,4 @@ export default router;
 // }
 //
 // export default router;
-
+//
