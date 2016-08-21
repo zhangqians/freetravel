@@ -11,10 +11,13 @@ import db from './db/db';
 var routes = require('./db/login-and-register.js');
 const app = express();
 const compiler = webpack(webpackConfig);
+<<<<<<< HEAD
 <<<<<<< 34d536a3d769599c1b9cd80dc09955b8b6f3dad5
 app.use(cookieParser());
 =======
 >>>>>>> rent exchange
+=======
+>>>>>>> want-new
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(webpackDevMiddleware(compiler, {
@@ -34,10 +37,13 @@ app.use('/api', apiRouter);
 app.get('/hello', function (req, res) {
   res.send('Index, world!');
 });
+<<<<<<< HEAD
 <<<<<<< 34d536a3d769599c1b9cd80dc09955b8b6f3dad5
 
 app.post('/register', routes.insert);
 =======
+=======
+>>>>>>> want-new
 app.post("/register", routes.insert);
 >>>>>>> rent exchange
 app.post('/login', routes.login);
