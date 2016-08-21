@@ -2,6 +2,7 @@ import React, {Component}from 'react';
 import request from 'superagent'
 import "../css/rent.css"
 class SelectArea extends React.Component {
+<<<<<<< HEAD
 <<<<<<< 9f3b546da7359c0816cbeba6a1f4549b5cb89c27
   render() {
     return (
@@ -19,150 +20,60 @@ class SelectArea extends React.Component {
       </div>
     )
   }
+=======
+    render() {
+        return (
+            <div className="select">
+                <p> 地区：陕西省</p>
+                <input className="col-md-4" placeholder="请输入需要查找的商品信息"/>
+                <button className="btn btn-success btn-m" type="submit">搜索</button>
+            </div>)
+    }
+>>>>>>> want-new
 }
 class Picture extends React.Component {
-  render() {
-    return (
-      <div className="row image container-fluid ">
-        {/*<div className="picture-describe">*/}
-        {/*<a href="#">*/}
-        {/*<div><img src={picture1} className="picture"/></div>*/}
-        {/*<div>￥400/天 佳能（Canon）EOS 100D 单反套机（EF 40mm f/2.8 STM镜头）</div>*/}
-        {/*</a>*/}
-        {/*</div>*/}
+    constructor(props) {
+        super(props);
+        this.state = {
+            products:[]
+        };
+
+    }
+    componentDidMount() {
+        const self = this;
+        request
+        .get('/products', function (products) {
+            self.setState({
+                products: products
+            })
+        });
+    }
+
+    render() {
+        const productRow = this.state.products.map(product =>
+             (<div className="col-sm-4 col-md-3">
+                    <div className="thumbnail">
+                        <img src={product.imgName} className="picture"/>
+                        <p>￥{product.price}/天;名称：{product.productName};商品描述：{product.prductDescrip}</p>
+                        <p><a href="#" className="btn btn-primary" role="button">了解详情</a>
+                        </p>
+                    </div>
+                </div>
+        ));
+        return (
+
+            <div className="row image container-fluid ">
+                <div className="row row-rent">
+                    {productRow}
+                </div>
+            </div>
+        )
+    }
 
 
-        <div className="row row-rent">
-          <div className="col-sm-4 col-md-3">
-            <div className="thumbnail">
-              <img src={picture1} className="picture"/>
-              <p>￥400/天 佳能（Canon）EOS 100D 单反套机（EF 40mm f/2.8 STM镜头）</p>
-              <p><a href="#" className="btn btn-primary" role="button">Button</a>
-                <a href="#" class="btn btn-default" role="button">Button</a>
-              </p>
-            </div>
-          </div>
-          <div className="col-sm-4 col-md-3">
-            <div className="thumbnail ">
-              <img src={picture1} className="picture"/>
-              <p>￥400/天 佳能（Canon）EOS 100D 单反套机（EF 40mm f/2.8 STM镜头）</p>
-              <p><a href="#" className="btn btn-primary" role="button">Button</a>
-                <a href="#" class="btn btn-default" role="button">Button</a>
-              </p>
-            </div>
-          </div>
-          <div className="col-sm-4 col-md-3">
-            <div className="thumbnail ">
-              <img src={picture1} className="picture"/>
-              <p>￥400/天 佳能（Canon）EOS 100D 单反套机（EF 40mm f/2.8 STM镜头）</p>
-              <p><a href="#" className="btn btn-primary" role="button">Button</a> <a href="#"
-                                                                                     class="btn btn-default"
-                                                                                     role="button">Button</a>
-              </p>
-            </div>
-          </div>
-          <div className="col-sm-4 col-md-3">
-            <div className="thumbnail">
-              <img src={picture1} className="picture"/>
-              <p>￥400/天 佳能（Canon）EOS 100D 单反套机（EF 40mm f/2.8 STM镜头）</p>
-              <p><a href="#" className="btn btn-primary" role="button">Button</a> <a href="#"
-                                                                                     class="btn btn-default"
-                                                                                     role="button">Button</a>
-              </p>
-            </div>
-          </div>
-
-          {/*</div>*/}
-
-          {/*<div className="row">*/}
-          <div className="col-sm-4 col-md-3">
-            <div className="thumbnail">
-              <img src={picture1} className="picture"/>
-              <p>￥400/天 佳能（Canon）EOS 100D 单反套机（EF 40mm f/2.8 STM镜头）</p>
-              <p><a href="#" className="btn btn-primary" role="button">Button</a> <a href="#"
-                                                                                     class="btn btn-default"
-                                                                                     role="button">Button</a>
-              </p>
-            </div>
-          </div>
-          <div className="col-sm-4 col-md-3">
-            <div className="thumbnail">
-              <img src={picture1} className="picture"/>
-              <p>￥400/天 佳能（Canon）EOS 100D 单反套机（EF 40mm f/2.8 STM镜头）</p>
-              <p><a href="#" className="btn btn-primary" role="button">Button</a> <a href="#"
-                                                                                     class="btn btn-default"
-                                                                                     role="button">Button</a>
-              </p>
-            </div>
-          </div>
-          <div className="col-sm-4 col-md-3">
-            <div className="thumbnail">
-              <img src={picture1} className="picture"/>
-              <p>￥400/天 佳能（Canon）EOS 100D 单反套机（EF 40mm f/2.8 STM镜头）</p>
-              <p><a href="#" className="btn btn-primary" role="button">Button</a> <a href="#"
-                                                                                     class="btn btn-default"
-                                                                                     role="button">Button</a>
-              </p>
-            </div>
-          </div>
-          <div className="col-sm-4 col-md-3">
-            <div className="thumbnail">
-              <img src={picture1} className="picture"/>
-              <p>￥400/天 佳能（Canon）EOS 100D 单反套机（EF 40mm f/2.8 STM镜头）</p>
-              <p><a href="#" className="btn btn-primary" role="button">Button</a> <a href="#"
-                                                                                     class="btn btn-default"
-                                                                                     role="button">Button</a>
-              </p>
-            </div>
-          </div>
-
-          {/*</div>*/}
-
-          {/*<div className="row">*/}
-          <div className="col-sm-4 col-md-3">
-            <div className="thumbnail">
-              <img src={picture1} className="picture"/>
-              <p>￥400/天 佳能（Canon）EOS 100D 单反套机（EF 40mm f/2.8 STM镜头）</p>
-              <p><a href="#" className="btn btn-primary" role="button">Button</a> <a href="#"
-                                                                                     class="btn btn-default"
-                                                                                     role="button">Button</a>
-              </p>
-            </div>
-          </div>
-          <div className="col-sm-4 col-md-3">
-            <div className="thumbnail">
-              <img src={picture1} className="picture"/>
-              <p>￥400/天 佳能（Canon）EOS 100D 单反套机（EF 40mm f/2.8 STM镜头）</p>
-              <p><a href="#" className="btn btn-primary" role="button">Button</a> <a href="#"
-                                                                                     class="btn btn-default"
-                                                                                     role="button">Button</a>
-              </p>
-            </div>
-          </div>
-          <div className="col-sm-4 col-md-3">
-            <div className="thumbnail">
-              <img src={picture1} className="picture"/>
-              <p>￥400/天 佳能（Canon）EOS 100D 单反套机（EF 40mm f/2.8 STM镜头）</p>
-              <p><a href="#" className="btn btn-primary" role="button">Button</a> <a href="#"
-                                                                                     class="btn btn-default"
-                                                                                     role="button">Button</a>
-              </p>
-            </div>
-          </div>
-          <div className="col-sm-4 col-md-3">
-            <div className="thumbnail">
-              <img src={picture1} className="picture"/>
-              <p>￥400/天 佳能（Canon）EOS 100D 单反套机（EF 40mm f/2.8 STM镜头）</p>
-              <p><a href="#" className="btn btn-primary" role="button">Button</a> <a href="#"
-                                                                                     class="btn btn-default"
-                                                                                     role="button">Button</a>
-              </p>
-            </div>
-          </div>
-
-        </div>
 
 
+<<<<<<< HEAD
         {/*<div className="picture-describe">*/}
         {/*<a href="#"><img src={Image2} className="picture"/>*/}
         {/*<p>￥400/天 佳能（Canon）EOS 6D 单反套机（EF 24-105mm f/4L IS USM 镜头）</p></a>*/}
@@ -247,18 +158,17 @@ class Picture extends React.Component {
 
 
 >>>>>>> rent exchange
+=======
+>>>>>>> want-new
 }
 class Rent extends React.Component {
-  render() {
-    return (
-      <div>
-        <SelectArea />
-        <Picture />
-      </div>
-    )
-  }
+    render() {
+        return (
+            <div>
+                <SelectArea />
+                <Picture />
+            </div>
+        )
+    }
 }
 export default Rent;
-
-
-
