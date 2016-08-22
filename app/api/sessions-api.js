@@ -15,7 +15,7 @@ router.post('/', (req, res, next) => {
   else {
     User.findOne({name}, (err, userData) => {
       if (err) return next(err);
-      if (userData === null || userData.password != password) {
+      if (userData === null || userData.password !== password) {
         return res.status(401).send('name or password is wrong');
       }
       else if (userData.password === password) {

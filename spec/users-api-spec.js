@@ -12,7 +12,7 @@ describe('users-api test', () => {
     db.connect('test', (err) => {
       if (err) return done.fail(err);
       User.find().remove(finish(done));
-    })
+    });
   });
 
   afterEach((done) => {
@@ -40,14 +40,14 @@ describe('users-api test', () => {
         password: 'zyn199',
         email: 'zyn123@163.com',
         phone: '18292080565'
-      }).save((err, data) => {
+      }).save((err) => {
         if (err) return done.fail(err);
         request(app).post('/api/users').send({
           name: 'xy',
           password: 'zyn199',
           email: 'zyn123@163.com',
           phone: '18292080565'
-        }).expect(409, 'the name is exist', cb)
+        }).expect(409, 'the name is exist', cb);
       })
     ], finish(done));
   });

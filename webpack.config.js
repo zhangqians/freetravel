@@ -26,19 +26,19 @@ module.exports = {
         loader: 'style!css' // note style is before css
       }, {
         test: /\.(woff|woff2)$/,
-        loader: "url-loader?limit=10000&mimetype=application/font-woff"
+        loader: 'url-loader?limit=10000&mimetype=application/font-woff'
       }, {
         test: /\.ttf$/,
-        loader: "file-loader"
+        loader: 'file-loader'
       }, {
         test: /\.eot$/,
-        loader: "file-loader"
+        loader: 'file-loader'
       }, {
         test: /\.svg$/,
-        loader: "file-loader"
+        loader: 'file-loader'
       }, {
-        test: require.resolve("jquery"),
-        loader: "expose?$!expose?jQuery"
+        test: require.resolve('jquery'),
+        loader: 'expose?$!expose?jQuery'
       }, {
         test: /\.(png|jpg|jpeg)$/,
         loader: 'url-loader?limit=8192'
@@ -53,4 +53,4 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ]
-}
+};

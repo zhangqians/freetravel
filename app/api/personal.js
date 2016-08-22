@@ -5,14 +5,14 @@ import _ from 'lodash';
 
 const router = express.Router();
 
-router.get('/', function (req, res) {
+router.get('/', function (req, res,next) {
   const token = req.cookies['token'];
 
   if (_.isEmpty(token)) {
     return res.sendStatus(401);
   }
   else {
-    validateToken(token, function (err, isValidateToken) {
+    validateToken(token, next, function (err, isValidateToken) {
       if (err) return next(err);
       if (isValidateToken) {
         const username = getUsernameFromToken(token);
@@ -32,12 +32,12 @@ function getUsernameFromToken(token) {
   return token.substring(0, separatorIndex);
 }
 
-function validateToken(token, callback) {
+function validateToken(token, next, callback) {
   if (token === null || token.length === 0 || !token.includes(':')) {
     callback(null, false);
   }
   const name = getUsernameFromToken(token);
-  findUser(name, function (err, user) {
+  findUser(name, next, function (err, user) {
     if (err) return next(err);
     if (user) {
       const {name, password} = user;
@@ -46,7 +46,7 @@ function validateToken(token, callback) {
   });
 }
 
-function findUser(name, callback) {
+function findUser(name, next, callback) {
   User.findOne({name}, (err, userData) => {
     if (err) return next(err);
     callback(null, userData);

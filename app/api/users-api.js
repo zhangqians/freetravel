@@ -1,19 +1,19 @@
 import express from 'express';
 import {User} from '../db/schema';
 const router = express.Router();
-import {validateEmail, validatePhone} from '../shared/user-field-validation'
+import {validateEmail, validatePhone} from '../shared/user-field-validation';
 
 
 function existEmpty(userData) {
-  return !(userData.name == '' || userData.password == '' || userData.email == '' || userData.phone == '');
+  return !(userData.name === '' || userData.password === '' || userData.email === '' || userData.phone === '');
 }
 
 function isEmailRight(userData) {
-  return validateEmail(userData) != false;
+  return validateEmail(userData) !== false;
 }
 
 function isPhoneRight(userData) {
-  return validatePhone(userData) != false;
+  return validatePhone(userData) !== false;
 }
 
 function isUserInformationLegal(userData) {
@@ -62,7 +62,7 @@ router.post('/', function (req, res, next) {
           res.status(201).send('register success');
         });
       }
-      else if (doc != null) {
+      else if (doc !== null) {
         res.status(409).send('the name is exist');
       }
     });

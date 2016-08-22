@@ -10,7 +10,7 @@ describe('sessions-api-spec', ()=> {
     db.connect('test', (err) => {
       if (err) return done.fail(err);
       User.find().remove(finish(done));
-    })
+    });
   });
 
   afterEach((done) => {
