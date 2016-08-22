@@ -1,6 +1,6 @@
 import React, {Component}from 'react';
 import request from 'superagent'
-import "../css/rent.css"
+import "../css/rent.css";
 class SelectArea extends React.Component {
   render() {
     return (
@@ -19,24 +19,29 @@ class Picture extends React.Component {
     };
 
   }
-
-  componentDidMount() {
-    const self = this;
-    request
-      .get('/products', function (products) {
-        self.setState({
-          products: products
+  componentDidMount(){
+    request.post('/api/products')
+      .end((err,data)=>{
+        this.setState({
+          products: data.body
         })
       });
   }
-
+  _getName(name){
+    return ()=>{
+      alert(name);
+    };
+  }
   render() {
-    const productRow = this.state.products.map(product =>
-      (<div className="col-sm-4 col-md-3">
+    const productsRow = this.state.products.map(product =>
+      (
+        <div className="col-sm-4 col-md-3">
           <div className="thumbnail">
-            <img src={product.imgName} className="picture"/>
-            <p>￥{product.price}/天;名称：{product.productName};商品描述：{product.prductDescrip}</p>
-            <p><a href="#" className="btn btn-primary" role="button">了解详情</a>
+            <img src={'../images/goods/'+product.productName+'.jpg'} className="picture"/>
+            <p>￥{product.price}/{product.unit};商品描述：{product.briefDescription}</p>
+            <p>
+              <button  href="#"   className="btn btn-primary"  role="button" onClick={this._getName(product.name)}>了解详情
+              </button>
             </p>
           </div>
         </div>
@@ -45,21 +50,23 @@ class Picture extends React.Component {
 
       <div className="row image container-fluid ">
         <div className="row row-rent">
-          {productRow}
+          {productsRow}
         </div>
       </div>
     )
   }
 
 }
-  class Rent extends React.Component {
-    render() {
-        return (
-            <div>
-                <SelectArea />
-                <Picture />
-            </div>
-        )
-    }
+
+
+class Rent extends React.Component {
+  render() {
+    return (
+      <div>
+        <SelectArea />
+        <Picture />
+      </div>
+    )
+  }
 }
 export default Rent;
