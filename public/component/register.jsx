@@ -59,50 +59,31 @@ export default class Register extends Component {
       </div>
     </form>
   }
-
   _onNameChange(event) {
     this.setState({
       name: event.target.value
     });
   }
-
-<<<<<<< a92ee4776369bd4e2ef7edafd06f6a92ced0974a
   _onEmailChange(event) {
     this.setState({
       email: event.target.value
     })
   }
-
   _onPhoneChange(event) {
     this.setState({
       phone: event.target.value
     })
   }
-=======
-    _onEmailChange(event) {
-        this.setState({
-            email: event.target.value
-        })
-    }
-    _onPhoneChange(event) {
-        this.setState({
-            phone: event.target.value
-        })
-    }
->>>>>>> zhangqian
-
   _onPasswordChange(event) {
     this.setState({
       password: event.target.value
     })
   }
-
   _onConfirmPasswordChange(event) {
     this.setState({
       confirmPassword: event.target.value
     })
   }
-
   _onSubmit(event) {
     event.preventDefault();
     if (this.state.password !== this.state.confirmPassword) {
@@ -135,42 +116,5 @@ export default class Register extends Component {
           }
         });
     }
-
-<<<<<<< a92ee4776369bd4e2ef7edafd06f6a92ced0974a
   }
-=======
-    _onSubmit(event) {
-        event.preventDefault();
-        if (this.state.password !== this.state.confirmPassword) {
-            alert('密码不一致,请重新输入密码!');
-        }
-        else {
-            request.post('/api/users')
-                .send({
-                    name: this.state.name,
-                    email: this.state.email,
-                    phone: this.state.phone,
-                    password: this.state.password,
-                })
-                .end((err, res) => {
-                    if (res.statusCode === 400 && res.text === 'Please finish the form') {
-                        alert("Please finish the form!");
-                    }
-                    if (res.statusCode === 400 && res.text === 'The email is error') {
-                        alert("The email is error!");
-                    }
-                    if (res.statusCode === 400 && res.text === 'The phone number is error') {
-                        alert("The phone number is error!");
-                    }
-                    if (res.statusCode === 409) {
-                        alert("用户名已存在!");
-                    }
-                    if (res.statusCode === 201) {
-                        alert("注册成功!");
-                        hashHistory.push('/index-rent');
-                    }
-                });
-        }
-    }
->>>>>>> zhangqian
 }

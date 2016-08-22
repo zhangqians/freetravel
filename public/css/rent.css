@@ -1,20 +1,7 @@
 .select {
     margin: 3%;
 }
-<<<<<<< f7945fd67576aec31cb4dd16e0fad80323f6db9d
-<<<<<<< 0a8de6b65176db4c323ec8b9feb0fc78ee74b555
-<<<<<<< HEAD
-<<<<<<< e938abebb50a12ad3c1e0573b48e5479d123b068
-=======
-<<<<<<< HEAD
-<<<<<<< 34d536a3d769599c1b9cd80dc09955b8b6f3dad5
->>>>>>> want-new
-=======
-=======
-<<<<<<< HEAD
->>>>>>> rent exchange
-<<<<<<< 34d536a3d769599c1b9cd80dc09955b8b6f3dad5
->>>>>>> modify rent css
+
 
 #area {
     float: left;
@@ -24,21 +11,7 @@
     padding-right: 4px;
 }
 
-=======
->>>>>>> rent exchange
-<<<<<<< f7945fd67576aec31cb4dd16e0fad80323f6db9d
-<<<<<<< 0a8de6b65176db4c323ec8b9feb0fc78ee74b555
-<<<<<<< HEAD
-=======
-=======
->>>>>>> want-new
->>>>>>> want-new
-=======
->>>>>>> modify rent css
-=======
-=======
->>>>>>> want-new
->>>>>>> rent exchange
+
 .row {
     margin-left: 50px;
 }
@@ -47,20 +20,7 @@
     margin: 1%;
 }
 
-<<<<<<< f7945fd67576aec31cb4dd16e0fad80323f6db9d
-<<<<<<< 0a8de6b65176db4c323ec8b9feb0fc78ee74b555
-<<<<<<< HEAD
-<<<<<<< e938abebb50a12ad3c1e0573b48e5479d123b068
-=======
-<<<<<<< HEAD
-<<<<<<< 34d536a3d769599c1b9cd80dc09955b8b6f3dad5
->>>>>>> want-new
-=======
-=======
-<<<<<<< HEAD
->>>>>>> rent exchange
-<<<<<<< 34d536a3d769599c1b9cd80dc09955b8b6f3dad5
->>>>>>> modify rent css
+
 .row-select {
     margin: 5px;
 }
@@ -80,21 +40,7 @@
     margin-right: 15px;
 }
 
-=======
->>>>>>> rent exchange
-<<<<<<< f7945fd67576aec31cb4dd16e0fad80323f6db9d
-<<<<<<< 0a8de6b65176db4c323ec8b9feb0fc78ee74b555
-<<<<<<< HEAD
-=======
-=======
->>>>>>> want-new
->>>>>>> want-new
-=======
->>>>>>> modify rent css
-=======
-=======
->>>>>>> want-new
->>>>>>> rent exchange
+
 .text-search {
     width: 25%;
 }
@@ -103,40 +49,13 @@
     width: 200px;
     margin-bottom: 20px;
 }
-<<<<<<< f7945fd67576aec31cb4dd16e0fad80323f6db9d
-<<<<<<< 0a8de6b65176db4c323ec8b9feb0fc78ee74b555
-<<<<<<< HEAD
-<<<<<<< e938abebb50a12ad3c1e0573b48e5479d123b068
 
-.btn-selete {
-=======
-=======
-<<<<<<< HEAD
-<<<<<<< 34d536a3d769599c1b9cd80dc09955b8b6f3dad5
 
-.btn-selete {
-=======
-=======
->>>>>>> want-new
->>>>>>> want-new
-=======
-=======
-<<<<<<< HEAD
->>>>>>> rent exchange
-<<<<<<< 34d536a3d769599c1b9cd80dc09955b8b6f3dad5
 
-.btn-selete {
-=======
-<<<<<<< f7945fd67576aec31cb4dd16e0fad80323f6db9d
->>>>>>> modify rent css
-=======
-=======
->>>>>>> want-new
->>>>>>> rent exchange
 .btn-m{
     margin-left:5px;
 }
 .btn-selete{
->>>>>>> rent exchange
+
     margin-top: -34px;
 }
