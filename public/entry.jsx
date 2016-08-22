@@ -15,25 +15,25 @@ require('jquery');
 require("bootstrap-webpack");
 
 const router = <Router history={hashHistory}>
-    <Route path="/" component={App}>
-        <IndexRoute component={Index}/>
-        <Route path='/login' component={SignIn}/>
-        <Route path='/register' component={Register}/>
-        <Route path='/index-rent' component={IndexRent}/>
-        <Route path='/rent' component={Rent}/>
-        <Route path='/goods-details' component={GoodsDetails}/>
-        <Route path='/orderPage' component={OrderPage}/>
-        <Route path='/personalPage' component={PersonalPage}/>
-    </Route>
+  <Route path="/" component={App}>
+    <IndexRoute component={Index}/>
+    <Route path='/login' component={SignIn}/>
+    <Route path='/register' component={Register}/>
+    <Route path='/index-rent' component={IndexRent}/>
+    <Route path='/rent' component={Rent}/>
+    <Route path='/goods-details' component={GoodsDetails}/>
+    <Route path='/orderPage' component={OrderPage}/>
+    <Route path='/personalPage' component={PersonalPage}/>
+  </Route>
 </Router>;
 
 ReactDOM.render(
-    router,
-    document.getElementById("content")
+  router,
+  document.getElementById("content")
 );
 
 console.log($('#content').text());
 
 if (module.hot) {
-    module.hot.accept();
+  module.hot.accept();
 }

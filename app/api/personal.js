@@ -5,52 +5,52 @@ import _ from 'lodash';
 
 const router = express.Router();
 
-router.get('/', function (req, res) {
-    const token = req.cookies['token'];
+router.get('/', function (req, res,next) {
+  const token = req.cookies['token'];
 
-    if (_.isEmpty(token)) {
-        return res.sendStatus(401);
-    }
-    else {
-        validateToken(token, function (err, isValidateToken) {
-            if (err) return next(err);
-            if (isValidateToken) {
-                const username = getUsernameFromToken(token);
-                return res.json({username});
-            }
-            return res.sendStatus(401);
-        });
-    }
+  if (_.isEmpty(token)) {
+    return res.sendStatus(401);
+  }
+  else {
+    validateToken(token, next, function (err, isValidateToken) {
+      if (err) return next(err);
+      if (isValidateToken) {
+        const username = getUsernameFromToken(token);
+        return res.json({username});
+      }
+      return res.sendStatus(401);
+    });
+  }
 });
 
 function generateToken(name, password) {
-    return name + ':' + sha1(password);
+  return name + ':' + sha1(password);
 }
 
 function getUsernameFromToken(token) {
-    const separatorIndex = _.lastIndexOf(token, ':');
-    return token.substring(0, separatorIndex);
+  const separatorIndex = _.lastIndexOf(token, ':');
+  return token.substring(0, separatorIndex);
 }
 
-function validateToken(token, callback) {
-    if (token === null || token.length === 0 || !token.includes(':')) {
-        callback(null, false);
+function validateToken(token, next, callback) {
+  if (token === null || token.length === 0 || !token.includes(':')) {
+    callback(null, false);
+  }
+  const name = getUsernameFromToken(token);
+  findUser(name, next, function (err, user) {
+    if (err) return next(err);
+    if (user) {
+      const {name, password} = user;
+      callback(null, generateToken(name, password) === token);
     }
-    const name = getUsernameFromToken(token);
-    findUser(name, function (err, user) {
-        if (err) return next(err);
-        if (user) {
-            const {name, password} = user;
-            callback(null, generateToken(name, password) === token);
-        }
-    });
+  });
 }
 
-function findUser(name, callback) {
-    User.findOne({name}, (err, userData) => {
-        if (err) return next(err);
-        callback(null, userData);
-    });
+function findUser(name, next, callback) {
+  User.findOne({name}, (err, userData) => {
+    if (err) return next(err);
+    callback(null, userData);
+  });
 }
 
 export default router;

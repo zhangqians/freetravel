@@ -7,6 +7,6 @@ const router = express.Router();
 
 router.use('/users', userApi);
 router.use('/sessions', loginApi);
-router.use('/personal',personal);
+router.use('/personal', personal);
 
 export default router;
